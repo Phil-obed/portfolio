@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ══════════════════════════════════════
+   ROOT & BASE
+══════════════════════════════════════ */
 :root {
   --black: #0c0c0c;
   --black2: #111;
@@ -28,216 +31,46 @@ body { background: var(--black); color: var(--white); font-family: 'Barlow', san
 ::-webkit-scrollbar-thumb { background: var(--accent); }
 
 /* ── CURSOR ── */
-#cur { position: fixed; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s, background .2s; }
+#cur { position: fixed; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
 #cur-r { position: fixed; width: 30px; height: 30px; border: 1px solid rgba(232,81,42,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .35s, height .35s, border-color .3s; }
 #cur-r.big { width: 50px; height: 50px; border-color: var(--accent); }
 
 /* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1.6rem 3rem;
-  display: flex; justify-content: space-between; align-items: center;
-  mix-blend-mode: difference;
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 1.6rem 3rem; display: flex; justify-content: space-between; align-items: center; mix-blend-mode: difference; }
 .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-size: .72rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--white); }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--white); text-decoration: none; opacity: .5; transition: opacity .2s; }
 .nav-links a:hover { opacity: 1; }
 
-/* ───────────────── HERO ───────────────── */
-
+/* ── HERO ── */
 #hero {
-  background: 
-    linear-gradient(rgba(0,0,0,0.6), rgba(0, 0, 0, 0)),
-    url("resources/back.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0)), url("resources/back.png");
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
 }
-
-/* ── Top Bar ── */
-
-.hero-topbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  padding: 5.5rem 3rem 0;
-  z-index: 3;
-}
-
-.hero-label,
-.hero-date {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .7rem;
-  text-transform: uppercase;
-  padding: .5rem 1rem;
-}
-
-.hero-label {
-  background: var(--black3);
-  letter-spacing: .2em;
-  color: var(--off);
-}
-
-.hero-date {
-  background: var(--accent);
-  letter-spacing: .15em;
-  color: #fff;
-}
-
-/* ── Left Info ── */
-
-.hero-left {
-  position: absolute;
-  left: 3rem;
-  bottom: 18%;
-  z-index: 3;
-  max-width: 200px;
-}
-
-.hero-left p {
-  font-size: .82rem;
-  color: var(--off);
-  line-height: 1.7;
-  font-weight: 300;
-  margin-bottom: 1.5rem;
-}
-
-.hero-left .hname {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--white);
-  line-height: 1.2;
-  letter-spacing: .02em;
-}
-
-/* ── Right Info ── */
-
-.hero-right {
-  position: absolute;
-  right: 3rem;
-  bottom: 18%;
-  z-index: 3;
-  text-align: right;
-}
-
-.hero-right a {
-  display: block;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .75rem;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--off);
-  text-decoration: none;
-  margin-bottom: .55rem;
-  transition: color .2s ease;
-}
-
-.hero-right a:hover {
-  color: var(--accent);
-}
-
-.hero-right a strong {
-  color: var(--white);
-  font-weight: 500;
-}
-
-/* ───────────────── MOBILE FIX ───────────────── */
-
-@media (max-width: 768px) {
-
-  #hero {
-    background:
-      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0)),
-      url("resources/back2.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    justify-content: center;
-    text-align: center;
-  }
-
-  .hero-topbar {
-    padding: 2rem 1.5rem 0;
-  }
-
-  .hero-left,
-  .hero-right {
-    position: static;          /* remove absolute positioning */
-    max-width: 100%;
-    margin: 1.5rem 2rem;
-    text-align: center;
-  }
-
-  .hero-left .hname {
-    font-size: 1.6rem;
-  }
-
-  .hero-left p {
-    font-size: 0.75rem;
-  }
-
-}
-/* Bottom gradient fade */
-#hero::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 28%;
-  background: linear-gradient(transparent, var(--black));
-  z-index: 2; pointer-events: none;
-}
-
-/* Scroll cue */
-.scroll-cue {
-  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-  z-index: 4; display: flex; flex-direction: column; align-items: center; gap: .6rem;
-  font-family: 'Barlow Condensed', sans-serif; font-size: .58rem;
-  letter-spacing: .25em; text-transform: uppercase; color: var(--dim);
-  animation: fadeIn 1s 2.5s both;
-}
+.hero-topbar { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: flex-start; padding: 5.5rem 3rem 0; z-index: 3; }
+.hero-label, .hero-date { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; text-transform: uppercase; padding: .5rem 1rem; }
+.hero-label { background: var(--black3); letter-spacing: .2em; color: var(--off); }
+.hero-date { background: var(--accent); letter-spacing: .15em; color: #fff; }
+.hero-left { position: absolute; left: 3rem; bottom: 18%; z-index: 3; max-width: 200px; }
+.hero-left p { font-size: .82rem; color: var(--off); line-height: 1.7; font-weight: 300; margin-bottom: 1.5rem; }
+.hero-left .hname { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 600; color: var(--white); line-height: 1.2; letter-spacing: .02em; }
+.hero-right { position: absolute; right: 3rem; bottom: 18%; z-index: 3; text-align: right; }
+.hero-right a { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: var(--off); text-decoration: none; margin-bottom: .55rem; transition: color .2s; }
+.hero-right a:hover { color: var(--accent); }
+.hero-right a strong { color: var(--white); font-weight: 500; }
+#hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 28%; background: linear-gradient(transparent, var(--black)); z-index: 2; pointer-events: none; }
+.scroll-cue { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 4; display: flex; flex-direction: column; align-items: center; gap: .6rem; font-family: 'Barlow Condensed', sans-serif; font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--dim); animation: fadeIn 1s 2.5s both; }
 .scroll-cue-line { width: 1px; height: 36px; background: linear-gradient(var(--accent), transparent); animation: scl 2s ease-in-out infinite; }
 @keyframes scl { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:.3;transform:scaleY(.6)} }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
-/* ── PROFILE STRIP (on hero) ── */
-#profile-strip {
-  background: var(--black2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 0 3rem;
-  display: flex;
-  position: relative; z-index: 10;
-}
-
-.pstrip-col {
-  flex: 1;
-  border-right: 1px solid var(--border);
-  position: relative;
-}
+/* ── PROFILE STRIP ── */
+#profile-strip { background: var(--black2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 3rem; display: flex; position: relative; z-index: 10; }
+.pstrip-col { flex: 1; border-right: 1px solid var(--border); position: relative; }
 .pstrip-col:last-child { border-right: none; }
-
-.pstrip-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.5rem 2rem;
-  cursor: none;
-  transition: background .2s;
-  user-select: none;
-}
+.pstrip-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; cursor: none; transition: background .2s; user-select: none; }
 .pstrip-header:hover { background: var(--black3); }
 .pstrip-left { display: flex; align-items: center; gap: 1rem; }
 .pstrip-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -246,36 +79,19 @@ nav {
 .pstrip-value { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 500; color: var(--white); letter-spacing: .02em; margin-top: .1rem; }
 .pstrip-arrow { font-size: .7rem; color: var(--dim); transition: transform .3s, color .2s; }
 .pstrip-col.open .pstrip-arrow { transform: rotate(180deg); color: var(--accent); }
-
-.pstrip-drop {
-  max-height: 0; overflow: hidden;
-  transition: max-height .4s ease;
-  border-top: 0px solid var(--border);
-}
-.pstrip-col.open .pstrip-drop {
-  max-height: 600px;
-  border-top: 1px solid var(--border);
-}
+.pstrip-drop { max-height: 0; overflow: hidden; transition: max-height .4s ease; border-top: 0px solid var(--border); }
+.pstrip-col.open .pstrip-drop { max-height: 600px; border-top: 1px solid var(--border); }
 .pstrip-drop-inner { padding: 1.5rem 2rem 2rem; }
-.pstrip-drop-inner p { font-size: .86rem; color: var(--off); line-height: 1.7; font-weight: 300; }
 .pstrip-drop-inner .detail-row { display: flex; align-items: baseline; gap: .7rem; margin-bottom: .55rem; }
 .pstrip-drop-inner .detail-label { font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; }
 .pstrip-drop-inner .detail-val { font-size: .84rem; color: var(--off); font-weight: 300; line-height: 1.5; }
-
-/* Org logos (inline SVG-drawn) */
 .org-entry { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border2); }
 .org-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.org-logo { width: 36px; height: 36px; border-radius: 4px; background: var(--black4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Bebas Neue', sans-serif; font-size: .8rem; color: var(--accent); letter-spacing: .05em; }
+.org-logo { width: 36px; height: 36px; border-radius: 4px; background: var(--black4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Bebas Neue', sans-serif; font-size: .8rem; color: var(--accent); letter-spacing: .05em; overflow: hidden; }
+.org-logo img { width: 100%; height: 100%; object-fit: contain; }
 .org-info .org-name { font-family: 'Barlow Condensed', sans-serif; font-size: .85rem; font-weight: 600; color: var(--white); letter-spacing: .05em; }
 .org-info .org-role { font-size: .78rem; color: var(--off); font-weight: 300; margin-top: .1rem; }
 .org-info .org-period { font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-top: .25rem; }
-
-.org-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;   /* keeps aspect ratio */
-}
-
 .domain-grid { display: flex; flex-wrap: wrap; gap: .4rem; }
 .domain-chip { font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; padding: .28rem .75rem; border: 1px solid var(--border); color: var(--off); background: var(--black4); transition: all .2s; }
 .domain-chip:hover { border-color: var(--accent); color: var(--accent); }
@@ -286,32 +102,25 @@ nav {
 .sec-label { font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem; }
 .sec-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); line-height: .95; letter-spacing: .01em; color: var(--white); }
 
-/* ── CAPABILITIES (Expandable list) ── */
+/* ── CAPABILITIES ── */
 #capabilities { padding: 6rem 3rem; }
 .cap-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1px; background: var(--border); border: 1px solid var(--border); margin-top: 4rem; }
-.cap-cat {
-  background: var(--black);
-  border-bottom: 1px solid var(--border);
-}
+.cap-cat { background: var(--black); border-bottom: 1px solid var(--border); }
 .cap-cat:nth-last-child(-n+2) { border-bottom: none; }
-.cap-trigger {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.4rem 2rem; cursor: none;
-  transition: background .2s;
-}
+.cap-trigger { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 2rem; cursor: none; transition: background .2s; }
 .cap-trigger:hover { background: var(--black3); }
 .cap-trigger-left { display: flex; align-items: center; gap: 1rem; }
 .cap-trigger-num { font-family: 'Barlow Condensed', sans-serif; font-size: .58rem; letter-spacing: .2em; color: var(--dim); }
 .cap-trigger-name { font-family: 'Barlow Condensed', sans-serif; font-size: .95rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--white); }
 .cap-arrow { font-size: .65rem; color: var(--dim); transition: transform .3s, color .2s; }
 .cap-cat.open .cap-arrow { transform: rotate(180deg); color: var(--accent); }
-.cap-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; border-top: 0px solid var(--border); }
+.cap-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
 .cap-cat.open .cap-body { max-height: 400px; border-top: 1px solid var(--border); }
 .cap-list { padding: 1.2rem 2rem 1.5rem; display: flex; flex-direction: column; gap: .42rem; }
 .cap-item { font-size: .84rem; color: var(--off); font-weight: 300; display: flex; align-items: center; gap: .65rem; }
 .cap-item::before { content: ''; display: block; width: 4px; height: 4px; border: 1px solid var(--accent); transform: rotate(45deg); flex-shrink: 0; }
 
-/* ── PROJECTS ── */
+/* ── PROJECT CARDS ── */
 #projects { padding: 6rem 3rem; background: var(--black2); }
 .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 4rem; }
 .proj-card { background: var(--black2); position: relative; cursor: none; transition: background .3s; overflow: hidden; }
@@ -337,7 +146,6 @@ nav {
 .proj-lnk:hover { color: var(--accent); }
 .proj-exp { margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); background: none; border: none; cursor: none; transition: color .2s; }
 .proj-exp:hover { color: var(--accent); }
-
 .filter-row { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: 2.5rem; }
 .fb { font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; padding: .45rem 1.2rem; border: 1px solid var(--border); color: var(--off); background: transparent; cursor: none; transition: all .2s; }
 .fb:hover, .fb.on { border-color: var(--accent); color: var(--accent); background: rgba(232,81,42,.07); }
@@ -354,29 +162,17 @@ nav {
 .ph-text p { font-size: .96rem; color: var(--off); font-weight: 300; line-height: 1.9; margin-bottom: 1.4rem; }
 .ph-text p:last-child { margin-bottom: 0; }
 
-/* ── TECH LOGOS STRIP ── */
+/* ── TECH STRIP ── */
 #techstack { padding: 5rem 3rem; background: var(--black2); overflow: hidden; }
-.tech-strip-wrap { margin-top: 3.5rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2rem 0; overflow: hidden; position: relative; }
+.tech-strip-wrap { margin-top: 3.5rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2rem 0; overflow: hidden; }
 .tech-strip { display: flex; gap: 3rem; align-items: center; width: max-content; animation: marquee 30s linear infinite; }
 .tech-strip:hover { animation-play-state: paused; }
 .tech-item { display: flex; flex-direction: column; align-items: center; gap: .5rem; flex-shrink: 0; opacity: .5; transition: opacity .2s; }
 .tech-item:hover { opacity: 1; }
+.tech-logo { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; }
+.tech-logo img { width: 100%; height: 100%; object-fit: contain; }
 .tech-name { font-family: 'Barlow Condensed', sans-serif; font-size: .56rem; letter-spacing: .15em; text-transform: uppercase; color: var(--off); white-space: nowrap; }
 @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-
-.tech-logo {
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tech-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
 
 /* ── VISION ── */
 #vision { padding: 7rem 3rem; position: relative; overflow: hidden; }
@@ -402,7 +198,426 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
 .foot-bottom { padding-top: 2rem; border-top: 1px solid var(--border2); display: flex; justify-content: space-between; }
 .fcp { font-family: 'Barlow Condensed', sans-serif; font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
 
-/* ── MODAL ── */
+/* ══════════════════════════════════════
+   PROJECT OVERLAY — SWEATER WEATHER EDITORIAL
+══════════════════════════════════════ */
+#po {
+  position: fixed; inset: 0; z-index: 300;
+  background: #f9f8f6;
+  overflow-y: auto; overflow-x: hidden;
+  transform: translateY(100%);
+  transition: transform .75s cubic-bezier(.77,0,.18,1);
+  cursor: none;
+  font-family: 'Barlow', sans-serif;
+}
+#po.open { transform: translateY(0); }
+body.po-open { overflow: hidden; }
+
+/* ── OVERLAY NAV BAR ── */
+.po-nav {
+  position: sticky; top: 0; z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid #e5e3df;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2.5rem;
+}
+.po-nav-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
+  color: #111; font-weight: 600;
+  display: flex; align-items: center; gap: .6rem;
+}
+.po-nav-brand span { color: #bbb; font-weight: 400; }
+.po-nav-links { display: flex; gap: 2.2rem; align-items: center; }
+.po-nav-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+  color: #aaa; background: none; border: none; cursor: none;
+  transition: color .2s; padding: 0; text-decoration: none;
+}
+.po-nav-link:hover { color: #111; }
+.po-close-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+  color: #111; background: none; border: none; cursor: none;
+  display: flex; align-items: center; gap: .55rem;
+  transition: opacity .2s; padding: 0;
+}
+.po-close-btn:hover { opacity: .5; }
+.po-close-x {
+  width: 20px; height: 20px; border: 1px solid #ccc; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: .55rem;
+}
+
+/* ── HERO: heading left, product panel right ── */
+/* Matches reference: white left, dark right photo panel, product breaking out of corner */
+.po-hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+  background: #fff;
+  border-bottom: 1px solid #e5e3df;
+  position: relative;
+}
+.po-hero-l {
+  padding: 4rem 3rem 4rem 2.5rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-right: 1px solid #e5e3df;
+  position: relative; z-index: 2;
+}
+.po-hero-top { }
+.po-hero-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .58rem; letter-spacing: .25em; text-transform: uppercase;
+  color: #bbb; margin-bottom: 2rem;
+}
+.po-hero-h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4.5rem, 9vw, 9rem);
+  line-height: .88; color: #111; letter-spacing: .01em;
+  margin-bottom: 1.8rem;
+}
+.po-hero-tagline {
+  font-size: .95rem; font-weight: 300; color: #666;
+  line-height: 1.8; max-width: 340px; margin-bottom: 2rem;
+}
+.po-hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+  color: #999; margin-bottom: .35rem;
+}
+.po-hero-cta {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: #111; text-decoration: none; border: none;
+  background: none; cursor: none; padding: 0; margin-top: .8rem;
+  transition: opacity .2s;
+}
+.po-hero-cta::after { content: '→'; transition: transform .2s; }
+.po-hero-cta:hover { opacity: .5; }
+.po-hero-cta:hover::after { transform: translateX(4px); }
+.po-hero-bottom {
+  display: flex; flex-direction: column; gap: 1.5rem;
+  padding-top: 3rem; border-top: 1px solid #e5e3df;
+}
+.po-hero-meta-row { display: flex; gap: 3rem; flex-wrap: wrap; }
+.po-hero-meta-item { }
+.po-hero-meta-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .52rem; letter-spacing: .22em; text-transform: uppercase;
+  color: #bbb; margin-bottom: .2rem;
+}
+.po-hero-meta-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .82rem; font-weight: 500; color: #222; letter-spacing: .04em;
+}
+/* Right panel: dark with product image floating */
+.po-hero-r {
+  position: relative; overflow: hidden;
+  background: #111; display: flex; align-items: center; justify-content: center;
+}
+.po-hero-r-bg { position: absolute; inset: 0; transition: background .5s; }
+.po-hero-r-bgword {
+  position: absolute; bottom: -.05em; right: -.05em;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(100px, 16vw, 200px);
+  line-height: 1; color: rgba(255,255,255,.03);
+  pointer-events: none; white-space: nowrap; letter-spacing: -.02em;
+}
+.po-hero-r-icon {
+  position: relative; z-index: 2;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+}
+.po-hero-r-icon svg { width: 80px; height: 80px; }
+/* Status badge */
+.po-status-badge {
+  position: absolute; top: 2rem; left: 2rem; z-index: 3;
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .56rem; letter-spacing: .18em; text-transform: uppercase;
+  padding: .3rem .8rem; border: 1px solid;
+}
+.po-status-badge.sbb-proto { color: #4dffa0; border-color: rgba(77,255,160,.3); background: rgba(77,255,160,.05); }
+.po-status-badge.sbb-active { color: var(--accent); border-color: rgba(232,81,42,.35); background: rgba(232,81,42,.05); }
+.po-status-badge.sbb-concept { color: #ffd06d; border-color: rgba(255,208,109,.3); background: rgba(255,208,109,.05); }
+.po-status-badge.sbb-built { color: #7ab8ff; border-color: rgba(122,184,255,.3); background: rgba(122,184,255,.05); }
+/* Tags bottom-left of dark panel */
+.po-hero-r-tags {
+  position: absolute; bottom: 2rem; left: 2rem; z-index: 3;
+  display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.po-hero-r-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .54rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: .2rem .6rem; border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.4); background: rgba(0,0,0,.2);
+}
+
+/* ── OVERVIEW BAND: thin info strip ── */
+.po-overview {
+  background: #fff; border-bottom: 1px solid #e5e3df;
+  display: flex; align-items: stretch;
+}
+.po-overview-item {
+  flex: 1; padding: 1.8rem 2rem;
+  border-right: 1px solid #e5e3df;
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.po-overview-item:last-child { border-right: none; }
+.po-overview-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .52rem; letter-spacing: .22em; text-transform: uppercase; color: #ccc;
+}
+.po-overview-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .82rem; font-weight: 500; color: #222; letter-spacing: .03em;
+}
+
+/* ── SIGNATURE (large feature): title left + big product image right ── */
+/* Mirrors "Signature blend" section in reference */
+.po-feature {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  border-bottom: 1px solid #e5e3df;
+  background: #fff;
+  min-height: 60vh;
+}
+.po-feature.flip { grid-template-columns: 1.6fr 1fr; }
+.po-feature-text {
+  padding: 4rem 3rem 4rem 2.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid #e5e3df;
+}
+.po-feature.flip .po-feature-text { border-right: none; border-left: 1px solid #e5e3df; order: 2; }
+.po-feature.flip .po-feature-visual { order: 1; }
+.po-feature-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 7rem; color: #f0ede8; line-height: 1; margin-bottom: -.5rem;
+}
+.po-feature-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .56rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .5rem;
+}
+.po-feature-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4rem); line-height: .9; color: #111;
+  margin-bottom: 1.8rem;
+}
+.po-feature-body {
+  font-size: .9rem; font-weight: 300; color: #666;
+  line-height: 1.9; max-width: 380px; margin-bottom: 1.5rem;
+}
+.po-read-more {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+  color: #111; text-decoration: none; border: none; background: none;
+  cursor: none; display: inline-flex; align-items: center; gap: .5rem;
+  padding: 0; transition: opacity .2s; align-self: flex-start;
+}
+.po-read-more:hover { opacity: .45; }
+/* Visual panel for feature: dark with centered product illustration */
+.po-feature-visual {
+  background: #f0ede8; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; min-height: 420px;
+}
+.po-feature-visual.dark { background: #111; }
+.po-feature-vis-bg { position: absolute; inset: 0; }
+.po-feature-vis-frame {
+  position: relative; z-index: 2;
+  width: 280px; height: 280px;
+  background: #fff; border: 1px solid #e0ddd8;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.1);
+}
+.po-feature-visual.dark .po-feature-vis-frame {
+  background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+.po-feature-vis-frame svg { width: 100px; height: 100px; }
+.po-feature-vis-caption {
+  position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
+  z-index: 3; text-align: center;
+}
+.po-feature-vis-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; color: #222; line-height: 1; margin-bottom: .2rem;
+}
+.po-feature-visual.dark .po-feature-vis-name { color: rgba(255,255,255,.7); }
+.po-feature-vis-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .56rem; letter-spacing: .18em; text-transform: uppercase; color: #aaa;
+}
+.po-feature-vis-dots { display: flex; gap: 3px; justify-content: center; margin-top: .5rem; }
+.po-feature-vis-dots span {
+  width: 14px; height: 2px; background: #ccc;
+}
+.po-feature-vis-dots span.on { background: #555; }
+.po-feature-visual.dark .po-feature-vis-dots span.on { background: #fff; }
+.po-feature-bgword {
+  position: absolute; bottom: -.1em; left: -.05em;
+  font-family: 'Bebas Neue', sans-serif; font-size: 9rem;
+  color: rgba(0,0,0,.04); pointer-events: none; line-height: 1; letter-spacing: -.02em;
+}
+.po-feature-visual.dark .po-feature-bgword { color: rgba(255,255,255,.03); }
+
+/* ── STACK GRID: like the product specs grid ── */
+.po-specs {
+  background: #fff; border-bottom: 1px solid #e5e3df;
+}
+.po-specs-head {
+  padding: 3rem 2.5rem 2rem;
+  border-bottom: 1px solid #e5e3df;
+  display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.po-specs-head-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: #f0ede8; line-height: 1;
+  margin-bottom: -.5rem;
+}
+.po-specs-head-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .56rem; letter-spacing: .28em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: .3rem;
+}
+.po-specs-head-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem); color: #111; line-height: 1;
+}
+.po-specs-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.po-specs-col {
+  padding: 2.5rem; border-right: 1px solid #e5e3df;
+}
+.po-specs-col:last-child { border-right: none; }
+.po-specs-col-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .54rem; letter-spacing: .25em; text-transform: uppercase;
+  color: #bbb; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: .7rem;
+}
+.po-specs-col-label::after { content: ''; flex: 1; height: 1px; background: #e5e3df; }
+.po-specs-list { display: flex; flex-direction: column; }
+.po-specs-item {
+  display: grid; grid-template-columns: 2rem 1fr;
+  align-items: center; gap: 1rem;
+  padding: .85rem 0; border-bottom: 1px solid #f2f0ec;
+  font-size: .88rem; font-weight: 300; color: #444;
+  transition: padding-left .18s;
+}
+.po-specs-item:hover { padding-left: .4rem; }
+.po-specs-item:last-child { border-bottom: none; }
+.po-specs-n {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .52rem; color: var(--accent); letter-spacing: .1em;
+}
+
+/* ── DARK CHALLENGE BAND ── */
+.po-dark-band {
+  background: #111; color: #fff;
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #1a1a1a;
+}
+.po-dark-l {
+  padding: 5rem 3rem 5rem 2.5rem;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+.po-dark-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 6rem;
+  color: rgba(255,255,255,.05); line-height: 1; margin-bottom: -.4rem;
+}
+.po-dark-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .56rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .4rem;
+}
+.po-dark-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: .9; color: #fff;
+  margin-bottom: 2rem;
+}
+.po-dark-text {
+  font-size: .9rem; font-weight: 300; color: rgba(255,255,255,.5);
+  line-height: 1.9; max-width: 380px;
+}
+.po-dark-r {
+  padding: 5rem 3rem;
+  display: flex; flex-direction: column; justify-content: center; gap: 2rem;
+}
+.po-dark-status-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .54rem; letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(255,255,255,.28); margin-bottom: .4rem;
+}
+.po-dark-status-val {
+  font-size: .88rem; font-weight: 300; color: rgba(255,255,255,.55);
+  line-height: 1.85;
+}
+.po-gh-cta {
+  display: inline-flex; align-items: center; gap: .7rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: #fff; background: var(--accent); padding: .85rem 2rem;
+  text-decoration: none; border: none; cursor: none;
+  transition: background .2s; align-self: flex-start;
+}
+.po-gh-cta:hover { background: #c73d1e; }
+
+/* ── RELATED / FOOTER ── */
+.po-related {
+  background: #f9f8f6; border-bottom: 1px solid #e5e3df; padding: 3.5rem 2.5rem;
+}
+.po-related-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .56rem; letter-spacing: .28em; text-transform: uppercase;
+  color: #bbb; margin-bottom: 1.8rem;
+}
+.po-related-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 1px; background: #e5e3df;
+}
+.po-rc {
+  background: #fff; padding: 1.6rem 1.5rem; cursor: none;
+  transition: background .2s;
+}
+.po-rc:hover { background: #f0ede8; }
+.po-rc-cat {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .52rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .3rem;
+}
+.po-rc-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .82rem; font-weight: 600; color: #111; letter-spacing: .03em; margin-bottom: .25rem;
+}
+.po-rc-desc { font-size: .75rem; font-weight: 300; color: #999; line-height: 1.55; }
+
+/* Responsive */
+@media(max-width:900px){
+  .po-hero { grid-template-columns: 1fr; }
+  .po-hero-r { min-height: 60vw; }
+  .po-hero-l { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid #e5e3df; }
+  .po-overview { flex-wrap: wrap; }
+  .po-overview-item { min-width: 50%; }
+  .po-feature { grid-template-columns: 1fr; min-height: auto; }
+  .po-feature.flip { grid-template-columns: 1fr; }
+  .po-feature.flip .po-feature-text { border-left: none; border-bottom: 1px solid #e5e3df; order: 1; }
+  .po-feature.flip .po-feature-visual { order: 2; }
+  .po-feature-text { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid #e5e3df; }
+  .po-feature-visual { min-height: 60vw; }
+  .po-specs-grid { grid-template-columns: 1fr; }
+  .po-specs-col { border-right: none; border-bottom: 1px solid #e5e3df; padding: 2rem 1.5rem; }
+  .po-dark-band { grid-template-columns: 1fr; }
+  .po-dark-l { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .po-dark-r { padding: 3rem 1.5rem; }
+  .po-related-grid { grid-template-columns: 1fr 1fr; }
+  .po-nav { padding: .9rem 1.5rem; }
+  .po-nav-links { gap: 1rem; }
+}
+
+/* CV modal */
 .ov { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.95); z-index: 500; align-items: center; justify-content: center; padding: 2rem; }
 .ov.open { display: flex; }
 .mod { background: var(--black2); border: 1px solid var(--border); border-top: 2px solid var(--accent); width: 100%; max-width: 800px; max-height: 88vh; overflow-y: auto; }
@@ -412,22 +627,11 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
 .mclose { background: none; border: none; cursor: none; font-size: 1.2rem; color: var(--off); line-height: 1; transition: color .2s; }
 .mclose:hover { color: var(--accent); }
 .m-body { padding: 2.5rem; }
-.ms { margin-bottom: 1.8rem; }
-.ms-t { font-family: 'Barlow Condensed', sans-serif; font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem; }
-.ms p, .ms ul { font-size: .86rem; color: var(--off); font-weight: 300; line-height: 1.75; }
-.ms ul { padding-left: 1rem; }
-.ms li { margin-bottom: .25rem; }
-.m2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.mbar { padding: 1.2rem 1.5rem; background: var(--black3); border-left: 2px solid var(--accent); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
-.mbar p { font-size: .84rem; color: var(--off); font-weight: 300; }
-
-/* CV modal */
 #cv-ov .mod { max-width: 900px; height: 90vh; display: flex; flex-direction: column; }
 #cv-ov .m-body { flex: 1; padding: 0; display: flex; flex-direction: column; }
 #cv-ov iframe { flex: 1; border: none; width: 100%; }
-.cv-bar { padding: 1rem 1.5rem; background: var(--black3); border-bottom: 1px solid var(--border); display: flex; justify-content: flex-end; }
 
-/* ── REVEAL ── */
+/* Reveal */
 .rev { opacity: 0; transform: translateY(22px); transition: opacity .75s, transform .75s; }
 .rev.vis { opacity: 1; transform: none; }
 
@@ -439,14 +643,14 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
   #profile-strip { flex-direction: column; padding: 0; }
   .pstrip-col { border-right: none; border-bottom: 1px solid var(--border); }
   .sec, #vision, #capabilities, #projects, #philosophy, #techstack, footer { padding: 5rem 1.5rem; }
-  .cap-layout { grid-template-columns: 1fr; }
-  .proj-grid { grid-template-columns: 1fr; }
-  .ph-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .foot-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .m2 { grid-template-columns: 1fr; }
-  #cv-ov .mod { height: 95vh; }
+  .cap-layout, .proj-grid, .ph-grid, .foot-grid { grid-template-columns: 1fr; }
   body { cursor: auto; }
   #cur, #cur-r { display: none; }
+}
+@media(max-width:768px){
+  #hero { background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0)), url("resources/back2.png"); background-size: cover; background-position: center; }
+  .hero-left, .hero-right { position: static; max-width: 100%; margin: 1.5rem 2rem; text-align: center; }
+  .hero-topbar { padding: 2rem 1.5rem 0; }
 }
 </style>
 </head>
@@ -468,287 +672,98 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
 
 <!-- HERO -->
 <section id="hero">
-  <!-- Top bar -->
   <div class="hero-topbar">
     <div class="hero-label">Engineering Portfolio</div>
     <div class="hero-date">Robotics Engineer</div>
   </div>
-
-  <!-- Left -->
   <div class="hero-left">
-    <p>Perfection is a skill. &amp;<br>Limits are a mindset.<br>Both can be pushed.</p>
+    <p>Perfection is a skill. <br>Limits are a mindset. &amp;<br>Both can be pushed.</p>
     <div class="hname">Philemon<br>Obed Obeng</div>
   </div>
-
-  <!-- Right -->
   <div class="hero-right">
-    <a href="mailto:philemonobjnr@gmail.com"><strong>Email</strong> philemonobjnr@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#cebea6a7a2aba3a1a0a1aca4a0bc8ea9a3afa7a2e0ada1a3"><strong>Email</strong> <span class="__cf_email__" data-cfemail="7b0b1312171e16141514191115093b1c161a121755181416">[email&#160;protected]</span></a>
     <a href="https://github.com/Phil-obed" target="_blank"><strong>GitHub</strong> Phil-obed</a>
     <a href="https://www.linkedin.com/in/philemonob" target="_blank"><strong>LinkedIn</strong> philemonob</a>
     <a href="tel:+233257305999"><strong>Call</strong> +233 257 305 999</a>
   </div>
-
-  <!-- Hero Buttons -->
   <div style="position:absolute;bottom:12%;left:3rem;z-index:4;display:flex;gap:.8rem;">
-    <a href="#projects" style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 1.6rem;background:var(--accent);color:#fff;text-decoration:none;transition:background .2s;">View Work</a>
-    <button onclick="openCV()" style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 1.6rem;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2);cursor:none;transition:all .2s;">View CV</button>
+    <a href="#projects" style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 1.6rem;background:var(--accent);color:#fff;text-decoration:none;">View Work</a>
+    <button onclick="openCV()" style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 1.6rem;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2);cursor:none;">View CV</button>
   </div>
-
-  <div class="scroll-cue">
-    <span>Scroll</span>
-    <div class="scroll-cue-line"></div>
-  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="scroll-cue-line"></div></div>
 </section>
 
 <!-- PROFILE STRIP -->
 <div id="profile-strip">
-
-  <!-- Education -->
   <div class="pstrip-col" id="strip-edu">
     <div class="pstrip-header" onclick="toggleStrip('strip-edu')">
       <div class="pstrip-left">
-        <div class="pstrip-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12.5v4.5c0 1.1 2.7 2 6 2s6-.9 6-2v-4.5"/><path d="M22 10v5"/></svg>
-        </div>
-        <div>
-          <div class="pstrip-title">Education</div>
-          <div class="pstrip-value">BSc EE · UENR</div>
-        </div>
+        <div class="pstrip-icon"><svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12.5v4.5c0 1.1 2.7 2 6 2s6-.9 6-2v-4.5"/><path d="M22 10v5"/></svg></div>
+        <div><div class="pstrip-title">Education</div><div class="pstrip-value">BSc EEE · UENR</div></div>
         <div class="org-logo"><img src="resources/uenr.png" alt="uenr"></div>
       </div>
       <div class="pstrip-arrow">▼</div>
     </div>
-    <div class="pstrip-drop">
-      <div class="pstrip-drop-inner">
-        <div class="detail-row"><span class="detail-label">Degree</span><span class="detail-val">BSc Electrical &amp; Electronics Engineering</span></div>
-        <div class="detail-row"><span class="detail-label">School</span><span class="detail-val">University of Energy &amp; Natural Resources, Ghana</span></div>
-        <div class="detail-row"><span class="detail-label">Year</span><span class="detail-val">December 2025</span></div>
-        <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border2)">
-          <div class="detail-row"><span class="detail-label">Award</span><span class="detail-val">Inventor of the Year — Ghana Institute of Engineers, 2024</span></div>
-          <div class="detail-row"><span class="detail-label">Award</span><span class="detail-val">Speak Out For Engineering — Local Winner, IMechE 2024</span></div>
-        </div>
+    <div class="pstrip-drop"><div class="pstrip-drop-inner">
+      <div class="detail-row"><span class="detail-label">Degree</span><span class="detail-val">BSc Electrical &amp; Electronics Engineering</span></div>
+      <div class="detail-row"><span class="detail-label">School</span><span class="detail-val">University of Energy &amp; Natural Resources, Ghana</span></div>
+      <div class="detail-row"><span class="detail-label">Year</span><span class="detail-val">December 2025</span></div>
+      <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border2)">
+        <div class="detail-row"><span class="detail-label">Award</span><span class="detail-val">Inventor of the Year — Ghana Institute of Engineers, 2024</span></div>
+        <div class="detail-row"><span class="detail-label">Award</span><span class="detail-val">Speak Out For Engineering — Local Winner, IMechE 2024</span></div>
       </div>
-    </div>
+    </div></div>
   </div>
 
-  <!-- Experience -->
   <div class="pstrip-col" id="strip-exp">
     <div class="pstrip-header" onclick="toggleStrip('strip-exp')">
       <div class="pstrip-left">
-        <div class="pstrip-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12"/></svg>
-        </div>
-        <div>
-          <div class="pstrip-title">Experience</div>
-          <div class="pstrip-value">VRA · URC · ASAH · GN · ePikk</div>
-        </div>
+        <div class="pstrip-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12"/></svg></div>
+        <div><div class="pstrip-title">Experience</div><div class="pstrip-value">VRA · URC · ASAH · GN · ePikk</div></div>
       </div>
       <div class="pstrip-arrow">▼</div>
     </div>
-    <div class="pstrip-drop">
-      <div class="pstrip-drop-inner">
-
-        <div class="org-entry">
-          <div class="org-logo"><img src="resources/epikk logo.png" alt="ePikk"></div>
-          <div class="org-info">
-            <div class="org-name">ePikk</div>
-            <div class="org-role">Founder &amp; Engineering Lead</div>
-            <div class="org-period">Ongoing</div>
-          </div>
-        </div>
-        <div class="org-entry">
-          <div class="org-logo"><img src="resources/gaf.png" alt="Ghana Navy"></div>
-          <div class="org-info">
-            <div class="org-name">Ghana Navy</div>
-            <div class="org-role">National Service Personnel</div>
-            <div class="org-period">Ongoing</div>
-          </div>
-        </div>
-        <div class="org-entry">
-          <div class="org-logo"><img src="resources/urc.png" alt="UENR Robotics Club"></div>
-          <div class="org-info">
-            <div class="org-name">UENR Robotics Club</div>
-            <div class="org-role">President — Led 40+ member engineering team</div>
-            <div class="org-period">Sep 2024 – Sep 2025</div>
-          </div>
-        </div>
-        <div class="org-entry">
-          <div class="org-logo"><img src="resources/vra logo.png" alt="Volta River Authority"></div>
-          <div class="org-info">
-            <div class="org-name">Volta River Authority</div>
-            <div class="org-role">Control &amp; Instrumentation Intern — Thermal Power plant</div>
-            <div class="org-period">Oct – Dec 2024</div>
-          </div>
-        </div>
-        <div class="org-entry">
-          <div class="org-logo"><img src="resources/urc.png" alt="UENR Robotics Club"></div>
-          <div class="org-info">
-            <div class="org-name">UENR Robotics Club</div>
-            <div class="org-role">Project Manager</div>
-            <div class="org-period">Sep 2023 – Sep 2024</div>
-          </div>
-        </div>
-        <div class="org-entry">
-          <div class="org-logo"><img src="resources/asah logo.png" alt="ASAH Makerspace"></div>
-          <div class="org-info">
-            <div class="org-name">ASAH Makerspace</div>
-            <div class="org-role">Electronics Engineering Intern — PCB, Embedded, CAD</div>
-            <div class="org-period">Oct – Dec 2023</div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
+    <div class="pstrip-drop"><div class="pstrip-drop-inner">
+      <div class="org-entry"><div class="org-logo"><img src="resources/epikk logo.png" alt="ePikk"></div><div class="org-info"><div class="org-name">ePikk</div><div class="org-role">Founder &amp; Engineering Lead</div><div class="org-period">Ongoing</div></div></div>
+      <div class="org-entry"><div class="org-logo"><img src="resources/gaf.png" alt="Ghana Navy"></div><div class="org-info"><div class="org-name">Ghana Navy</div><div class="org-role">National Service Personnel</div><div class="org-period">Ongoing</div></div></div>
+      <div class="org-entry"><div class="org-logo"><img src="resources/urc.png" alt="UENR Robotics Club"></div><div class="org-info"><div class="org-name">UENR Robotics Club</div><div class="org-role">President — Led 40+ member engineering team</div><div class="org-period">Sep 2024 – Sep 2025</div></div></div>
+      <div class="org-entry"><div class="org-logo"><img src="resources/vra logo.png" alt="VRA"></div><div class="org-info"><div class="org-name">Volta River Authority</div><div class="org-role">Control &amp; Instrumentation Intern</div><div class="org-period">Oct – Dec 2024</div></div></div>
+      <div class="org-entry"><div class="org-logo"><img src="resources/urc.png" alt="URC"></div><div class="org-info"><div class="org-name">UENR Robotics Club</div><div class="org-role">Project Manager</div><div class="org-period">Sep 2023 – Sep 2024</div></div></div>
+      <div class="org-entry"><div class="org-logo"><img src="resources/asah logo.png" alt="ASAH"></div><div class="org-info"><div class="org-name">ASAH Makerspace</div><div class="org-role">Electronics Engineering Intern</div><div class="org-period">Oct – Dec 2023</div></div></div>
+    </div></div>
   </div>
 
-  <!-- Domains -->
   <div class="pstrip-col" id="strip-dom">
     <div class="pstrip-header" onclick="toggleStrip('strip-dom')">
       <div class="pstrip-left">
-        <div class="pstrip-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-        </div>
-        <div>
-          <div class="pstrip-title">Domains</div>
-          <div class="pstrip-value">Autonomous · Embedded</div>
-        </div>
+        <div class="pstrip-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div><div class="pstrip-title">Domains</div><div class="pstrip-value">Autonomous · Embedded</div></div>
       </div>
       <div class="pstrip-arrow">▼</div>
     </div>
-    <div class="pstrip-drop">
-      <div class="pstrip-drop-inner">
-        <div class="domain-grid">
-          <span class="domain-chip">Autonomous Systems</span>
-          <span class="domain-chip">Embedded &amp; Control</span>
-          <span class="domain-chip">Robotics Hardware</span>
-          <span class="domain-chip">Computer Vision</span>
-          <span class="domain-chip">UAV &amp; VTOL</span>
-          <span class="domain-chip">Industrial Automation</span>
-          <span class="domain-chip">IoT Systems</span>
-          <span class="domain-chip">Power Systems</span>
-          <span class="domain-chip">PCB Design</span>
-          <span class="domain-chip">Sensor Fusion</span>
-        </div>
+    <div class="pstrip-drop"><div class="pstrip-drop-inner">
+      <div class="domain-grid">
+        <span class="domain-chip">Autonomous Systems</span><span class="domain-chip">Embedded &amp; Control</span>
+        <span class="domain-chip">Robotics Hardware</span><span class="domain-chip">Computer Vision</span>
+        <span class="domain-chip">UAV &amp; VTOL</span><span class="domain-chip">Industrial Automation</span>
+        <span class="domain-chip">IoT Systems</span><span class="domain-chip">Power Systems</span>
+        <span class="domain-chip">PCB Design</span><span class="domain-chip">Sensor Fusion</span>
       </div>
-    </div>
+    </div></div>
   </div>
-
 </div>
 
 <!-- CAPABILITIES -->
 <section id="capabilities">
   <div class="sec-label">Technical Skills</div>
   <div class="sec-heading">Core<br>Capabilities</div>
-
   <div class="cap-layout rev">
-    <div class="cap-cat" id="cap-rc">
-      <div class="cap-trigger" onclick="toggleCap('cap-rc')">
-        <div class="cap-trigger-left"><span class="cap-trigger-num">01</span><span class="cap-trigger-name">Robotics &amp; Control</span></div>
-        <span class="cap-arrow">▼</span>
-      </div>
-      <div class="cap-body">
-        <div class="cap-list">
-          <div class="cap-item">PID Control</div>
-          <div class="cap-item">State Estimation</div>
-          <div class="cap-item">Sensor Fusion</div>
-          <div class="cap-item">Motion Planning</div>
-          <div class="cap-item">Path Tracking Algorithms</div>
-          <div class="cap-item">System Identification</div>
-          <div class="cap-item">Kinematics &amp; Dynamics</div>
-          <div class="cap-item">PLC Programming</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cap-cat" id="cap-as">
-      <div class="cap-trigger" onclick="toggleCap('cap-as')">
-        <div class="cap-trigger-left"><span class="cap-trigger-num">02</span><span class="cap-trigger-name">Autonomous Systems</span></div>
-        <span class="cap-arrow">▼</span>
-      </div>
-      <div class="cap-body">
-        <div class="cap-list">
-          <div class="cap-item">ROS / ROS2</div>
-          <div class="cap-item">SLAM</div>
-          <div class="cap-item">Navigation Stack</div>
-          <div class="cap-item">Computer Vision Pipelines</div>
-          <div class="cap-item">Object Detection</div>
-          <div class="cap-item">Thermal Imaging Integration</div>
-          <div class="cap-item">Autonomous Navigation</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cap-cat" id="cap-eh">
-      <div class="cap-trigger" onclick="toggleCap('cap-eh')">
-        <div class="cap-trigger-left"><span class="cap-trigger-num">03</span><span class="cap-trigger-name">Embedded &amp; Hardware</span></div>
-        <span class="cap-arrow">▼</span>
-      </div>
-      <div class="cap-body">
-        <div class="cap-list">
-          <div class="cap-item">STM32 / Arduino / ESP32</div>
-          <div class="cap-item">Embedded C / C++</div>
-          <div class="cap-item">Real-time Systems</div>
-          <div class="cap-item">PCB Design (KiCad)</div>
-          <div class="cap-item">Motor Drivers</div>
-          <div class="cap-item">Sensor Integration</div>
-          <div class="cap-item">Power Management</div>
-          <div class="cap-item">Circuit Simulation</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cap-cat" id="cap-sw">
-      <div class="cap-trigger" onclick="toggleCap('cap-sw')">
-        <div class="cap-trigger-left"><span class="cap-trigger-num">04</span><span class="cap-trigger-name">Software &amp; Simulation</span></div>
-        <span class="cap-arrow">▼</span>
-      </div>
-      <div class="cap-body">
-        <div class="cap-list">
-          <div class="cap-item">C / C++</div>
-          <div class="cap-item">Python</div>
-          <div class="cap-item">MATLAB</div>
-          <div class="cap-item">Linux / Bash</div>
-          <div class="cap-item">Git / GitHub</div>
-          <div class="cap-item">Gazebo</div>
-          <div class="cap-item">RoboDK</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cap-cat" id="cap-mech">
-      <div class="cap-trigger" onclick="toggleCap('cap-mech')">
-        <div class="cap-trigger-left"><span class="cap-trigger-num">05</span><span class="cap-trigger-name">Mechanical &amp; Design</span></div>
-        <span class="cap-arrow">▼</span>
-      </div>
-      <div class="cap-body">
-        <div class="cap-list">
-          <div class="cap-item">Fusion 360</div>
-          <div class="cap-item">SolidWorks</div>
-          <div class="cap-item">Blender</div>
-          <div class="cap-item">3D Printing &amp; Assembly</div>
-          <div class="cap-item">Laser Cutting</div>
-          <div class="cap-item">FEA Simulations</div>
-          <div class="cap-item">Rapid Prototyping</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cap-cat" id="cap-pr">
-      <div class="cap-trigger" onclick="toggleCap('cap-pr')">
-        <div class="cap-trigger-left"><span class="cap-trigger-num">06</span><span class="cap-trigger-name">Protocols &amp; Comms</span></div>
-        <span class="cap-arrow">▼</span>
-      </div>
-      <div class="cap-body">
-        <div class="cap-list">
-          <div class="cap-item">CAN Bus</div>
-          <div class="cap-item">SPI / I2C / UART</div>
-          <div class="cap-item">MQTT</div>
-          <div class="cap-item">Wireless Telemetry</div>
-          <div class="cap-item">Serial Communication</div>
-          <div class="cap-item">Networking</div>
-        </div>
-      </div>
-    </div>
+    <div class="cap-cat" id="cap-rc"><div class="cap-trigger" onclick="toggleCap('cap-rc')"><div class="cap-trigger-left"><span class="cap-trigger-num">01</span><span class="cap-trigger-name">Robotics &amp; Control</span></div><span class="cap-arrow">▼</span></div><div class="cap-body"><div class="cap-list"><div class="cap-item">PID Control</div><div class="cap-item">State Estimation</div><div class="cap-item">Sensor Fusion</div><div class="cap-item">Motion Planning</div><div class="cap-item">Path Tracking Algorithms</div><div class="cap-item">System Identification</div><div class="cap-item">Kinematics &amp; Dynamics</div><div class="cap-item">PLC Programming</div></div></div></div>
+    <div class="cap-cat" id="cap-as"><div class="cap-trigger" onclick="toggleCap('cap-as')"><div class="cap-trigger-left"><span class="cap-trigger-num">02</span><span class="cap-trigger-name">Autonomous Systems</span></div><span class="cap-arrow">▼</span></div><div class="cap-body"><div class="cap-list"><div class="cap-item">ROS / ROS2</div><div class="cap-item">SLAM</div><div class="cap-item">Navigation Stack</div><div class="cap-item">Computer Vision Pipelines</div><div class="cap-item">Object Detection</div><div class="cap-item">Thermal Imaging Integration</div><div class="cap-item">Autonomous Navigation</div></div></div></div>
+    <div class="cap-cat" id="cap-eh"><div class="cap-trigger" onclick="toggleCap('cap-eh')"><div class="cap-trigger-left"><span class="cap-trigger-num">03</span><span class="cap-trigger-name">Embedded &amp; Hardware</span></div><span class="cap-arrow">▼</span></div><div class="cap-body"><div class="cap-list"><div class="cap-item">STM32 / Arduino / ESP32</div><div class="cap-item">Embedded C / C++</div><div class="cap-item">Real-time Systems</div><div class="cap-item">PCB Design (KiCad)</div><div class="cap-item">Motor Drivers</div><div class="cap-item">Sensor Integration</div><div class="cap-item">Power Management</div><div class="cap-item">Circuit Simulation</div></div></div></div>
+    <div class="cap-cat" id="cap-sw"><div class="cap-trigger" onclick="toggleCap('cap-sw')"><div class="cap-trigger-left"><span class="cap-trigger-num">04</span><span class="cap-trigger-name">Software &amp; Simulation</span></div><span class="cap-arrow">▼</span></div><div class="cap-body"><div class="cap-list"><div class="cap-item">C / C++</div><div class="cap-item">Python</div><div class="cap-item">MATLAB</div><div class="cap-item">Linux / Bash</div><div class="cap-item">Git / GitHub</div><div class="cap-item">Gazebo</div><div class="cap-item">RoboDK</div></div></div></div>
+    <div class="cap-cat" id="cap-mech"><div class="cap-trigger" onclick="toggleCap('cap-mech')"><div class="cap-trigger-left"><span class="cap-trigger-num">05</span><span class="cap-trigger-name">Mechanical &amp; Design</span></div><span class="cap-arrow">▼</span></div><div class="cap-body"><div class="cap-list"><div class="cap-item">Fusion 360</div><div class="cap-item">SolidWorks</div><div class="cap-item">Blender</div><div class="cap-item">3D Printing &amp; Assembly</div><div class="cap-item">Laser Cutting</div><div class="cap-item">FEA Simulations</div><div class="cap-item">Rapid Prototyping</div></div></div></div>
+    <div class="cap-cat" id="cap-pr"><div class="cap-trigger" onclick="toggleCap('cap-pr')"><div class="cap-trigger-left"><span class="cap-trigger-num">06</span><span class="cap-trigger-name">Protocols &amp; Comms</span></div><span class="cap-arrow">▼</span></div><div class="cap-body"><div class="cap-list"><div class="cap-item">CAN Bus</div><div class="cap-item">SPI / I2C / UART</div><div class="cap-item">MQTT</div><div class="cap-item">Wireless Telemetry</div><div class="cap-item">Serial Communication</div><div class="cap-item">Networking</div></div></div></div>
   </div>
 </section>
 
@@ -756,7 +771,6 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
 <section id="projects">
   <div class="sec-label">Engineering Systems</div>
   <div class="sec-heading">Selected<br>Projects</div>
-
   <div class="filter-row">
     <button class="fb on" onclick="filt(this,'all')">All</button>
     <button class="fb" onclick="filt(this,'robotics')">Robotics</button>
@@ -764,61 +778,30 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
     <button class="fb" onclick="filt(this,'embedded')">Embedded</button>
     <button class="fb" onclick="filt(this,'research')">Research</button>
   </div>
-
   <div class="proj-grid rev">
     <div class="proj-card" data-c="robotics embedded" onclick="openP('argus')">
       <div class="proj-thumb" style="background:linear-gradient(135deg,#080e12,#0e2030)"><div class="proj-bg-word">ARGUS</div><div class="proj-badge b-proto">Prototype</div><div class="proj-scan"></div></div>
-      <div class="proj-body">
-        <h3>Argus Bot</h3>
-        <p class="proj-mission">Autonomous industrial inspection robot. Gas leak detection &amp; thermal anomaly monitoring.</p>
-        <div class="proj-tags"><span class="ptag">ROS</span><span class="ptag">Thermal</span><span class="ptag">SLAM</span><span class="ptag">C++</span></div>
-        <div class="proj-ft"><a href="https://github.com/Phil-obed/Argus-bot.git" target="_blank" class="proj-lnk" onclick="event.stopPropagation()">GitHub ↗</a><button class="proj-exp" onclick="event.stopPropagation();openP('argus')">Details →</button></div>
-      </div>
+      <div class="proj-body"><h3>Argus Bot</h3><p class="proj-mission">Autonomous industrial inspection robot. Gas leak detection &amp; thermal anomaly monitoring.</p><div class="proj-tags"><span class="ptag">ROS</span><span class="ptag">Thermal</span><span class="ptag">SLAM</span><span class="ptag">C++</span></div><div class="proj-ft"><a href="https://github.com/Phil-obed/Argus-bot.git" target="_blank" class="proj-lnk" onclick="event.stopPropagation()">GitHub ↗</a><button class="proj-exp" onclick="event.stopPropagation();openP('argus')">View Details →</button></div></div>
     </div>
     <div class="proj-card" data-c="robotics 3d embedded" onclick="openP('pikk')">
       <div class="proj-thumb" style="background:linear-gradient(135deg,#0c0615,#1a0e28)"><div class="proj-bg-word">PIKK</div><div class="proj-badge b-proto">Prototype</div><div class="proj-scan"></div></div>
-      <div class="proj-body">
-        <h3>Pikk A1 — 6DoF Arm</h3>
-        <p class="proj-mission">Full-stack 6-DOF robotic arm — mechanical design, workspace sim, stepper control, custom PCB.</p>
-        <div class="proj-tags"><span class="ptag">Fusion 360</span><span class="ptag">RoboDK</span><span class="ptag">PCB</span><span class="ptag">Embedded C</span></div>
-        <div class="proj-ft"><button class="proj-exp">Details →</button></div>
-      </div>
+      <div class="proj-body"><h3>Pikk A1 — 6DoF Arm</h3><p class="proj-mission">Full-stack 6-DOF robotic arm — mechanical design, workspace sim, stepper control, custom PCB.</p><div class="proj-tags"><span class="ptag">Fusion 360</span><span class="ptag">RoboDK</span><span class="ptag">PCB</span><span class="ptag">Embedded C</span></div><div class="proj-ft"><button class="proj-exp">View Details →</button></div></div>
     </div>
     <div class="proj-card" data-c="robotics research embedded" onclick="openP('curiosity')">
       <div class="proj-thumb" style="background:linear-gradient(135deg,#040e0c,#082018)"><div class="proj-bg-word">CRV2</div><div class="proj-badge b-active">Active</div><div class="proj-scan"></div></div>
-      <div class="proj-body">
-        <h3>Curiosity v2</h3>
-        <p class="proj-mission">AI-assisted autonomous boat. Real-time water quality monitoring of mining-polluted rivers.</p>
-        <div class="proj-tags"><span class="ptag">AI/ML</span><span class="ptag">pH Sensors</span><span class="ptag">LoRa</span><span class="ptag">Python</span></div>
-        <div class="proj-ft"><button class="proj-exp">Details →</button></div>
-      </div>
+      <div class="proj-body"><h3>Curiosity v2</h3><p class="proj-mission">AI-assisted autonomous boat. Real-time water quality monitoring of mining-polluted rivers.</p><div class="proj-tags"><span class="ptag">AI/ML</span><span class="ptag">pH Sensors</span><span class="ptag">LoRa</span><span class="ptag">Python</span></div><div class="proj-ft"><button class="proj-exp">View Details →</button></div></div>
     </div>
     <div class="proj-card" data-c="research robotics" onclick="openP('vtol')">
       <div class="proj-thumb" style="background:linear-gradient(135deg,#090c14,#101528)"><div class="proj-bg-word">VTOL</div><div class="proj-badge b-concept">Concept</div><div class="proj-scan"></div></div>
-      <div class="proj-body">
-        <h3>VTOL UAV System</h3>
-        <p class="proj-mission">Hybrid fixed-wing/multirotor UAV for extended-range autonomous missions.</p>
-        <div class="proj-tags"><span class="ptag">UAV</span><span class="ptag">PX4</span><span class="ptag">Fusion 360</span><span class="ptag">MATLAB</span></div>
-        <div class="proj-ft"><button class="proj-exp">Details →</button></div>
-      </div>
+      <div class="proj-body"><h3>VTOL UAV System</h3><p class="proj-mission">Hybrid fixed-wing/multirotor UAV for extended-range autonomous missions.</p><div class="proj-tags"><span class="ptag">UAV</span><span class="ptag">PX4</span><span class="ptag">Fusion 360</span><span class="ptag">MATLAB</span></div><div class="proj-ft"><button class="proj-exp">View Details →</button></div></div>
     </div>
     <div class="proj-card" data-c="embedded 3d" onclick="openP('stemkit')">
       <div class="proj-thumb" style="background:linear-gradient(135deg,#100e06,#1e1808)"><div class="proj-bg-word">STEM</div><div class="proj-badge b-proto">Deployed</div><div class="proj-scan"></div></div>
-      <div class="proj-body">
-        <h3>STEM Robotics Kit</h3>
-        <p class="proj-mission">Modular educational robotics platform for young Ghanaian engineers.</p>
-        <div class="proj-tags"><span class="ptag">Arduino</span><span class="ptag">PCB</span><span class="ptag">3D Print</span><span class="ptag">Curriculum</span></div>
-        <div class="proj-ft"><button class="proj-exp">Details →</button></div>
-      </div>
+      <div class="proj-body"><h3>STEM Robotics Kit</h3><p class="proj-mission">Modular educational robotics platform for young Ghanaian engineers.</p><div class="proj-tags"><span class="ptag">Arduino</span><span class="ptag">PCB</span><span class="ptag">3D Print</span><span class="ptag">Curriculum</span></div><div class="proj-ft"><button class="proj-exp">View Details →</button></div></div>
     </div>
     <div class="proj-card" data-c="3d embedded" onclick="openP('printer')">
       <div class="proj-thumb" style="background:linear-gradient(135deg,#0c0c06,#181808)"><div class="proj-bg-word">FDM</div><div class="proj-badge b-built">Built</div><div class="proj-scan"></div></div>
-      <div class="proj-body">
-        <h3>Custom 3D Printer</h3>
-        <p class="proj-mission">Ground-up FDM printer build — mechanical assembly to Marlin firmware calibration.</p>
-        <div class="proj-tags"><span class="ptag">Marlin</span><span class="ptag">Stepper</span><span class="ptag">Mechanical</span><span class="ptag">Calibration</span></div>
-        <div class="proj-ft"><button class="proj-exp">Details →</button></div>
-      </div>
+      <div class="proj-body"><h3>Custom 3D Printer</h3><p class="proj-mission">Ground-up FDM printer build — mechanical assembly to Marlin firmware calibration.</p><div class="proj-tags"><span class="ptag">Marlin</span><span class="ptag">Stepper</span><span class="ptag">Mechanical</span><span class="ptag">Calibration</span></div><div class="proj-ft"><button class="proj-exp">View Details →</button></div></div>
     </div>
   </div>
 </section>
@@ -836,277 +819,52 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
       <div class="ph-pill"><div class="ph-pill-num">05</div><div><div class="ph-pill-name">Scalability</div><p class="ph-pill-d">Every system designed to scale across fleet, load, and environment.</p></div></div>
     </div>
     <div class="ph-text">
-      <p>I design for deployment, not demonstration. Accounting for real-world sensor noise, thermal behavior under sustained load, and failure modes that only emerge in field conditions — not in simulation.</p>
-      <p>Working at the intersection of mechanical systems, embedded firmware, and autonomous software has given me a cross-layer perspective that is difficult to develop in siloed contexts. The hardware-software boundary is a co-design surface, not a handoff point.</p>
+      <p>I design for deployment, not demonstration. Accounting for real-world sensor noise, thermal behavior under sustained load, and failure modes that only emerge in field conditions.</p>
+      <p>Working at the intersection of mechanical systems, embedded firmware, and autonomous software has given me a cross-layer perspective difficult to develop in siloed contexts. The hardware-software boundary is a co-design surface, not a handoff point.</p>
       <p>Every subsystem answers two questions: how does it fail gracefully, and how does it scale?</p>
     </div>
   </div>
 </section>
 
-<!-- TECH STACK (logo strip) -->
+<!-- TECH STACK -->
 <section id="techstack">
   <div class="sec-label">Technical Stack</div>
   <div class="sec-heading">Tools &amp;<br>Technologies</div>
-
   <div class="tech-strip-wrap rev">
-    <!-- Duplicate for seamless loop -->
-    <div class="tech-strip" id="techstrip">
-
-      <!-- Python -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/python.png" alt="Python">
-  </div>
-  <div class="tech-name">Python</div>
-</div>
-
-<!-- C++ -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/cpp.png" alt="C++">
-  </div>
-  <div class="tech-name">C / C++</div>
-</div>
-
-<!-- ROS -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/ros.png" alt="ROS">
-  </div>
-  <div class="tech-name">ROS / ROS2</div>
-</div>
-
-<!-- Linux -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/linux.png" alt="Linux">
-  </div>
-  <div class="tech-name">Linux</div>
-</div>
-
-<!-- MATLAB -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/matlab.png" alt="MATLAB">
-  </div>
-  <div class="tech-name">MATLAB</div>
-</div>
-
-<!-- OpenCV -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/opencv.png" alt="OpenCV">
-  </div>
-  <div class="tech-name">OpenCV</div>
-</div>
-
-<!-- Gazebo -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/gazebo.png" alt="Gazebo">
-  </div>
-  <div class="tech-name">Gazebo</div>
-</div>
-
-<!-- Arduino -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/arduino.png" alt="Arduino">
-  </div>
-  <div class="tech-name">Arduino</div>
-</div>
-
-<!-- ESP32 -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/esp32.png" alt="ESP32">
-  </div>
-  <div class="tech-name">ESP32 / STM32</div>
-</div>
-
-<!-- KiCad -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/kicad.png" alt="KiCad">
-  </div>
-  <div class="tech-name">KiCad</div>
-</div>
-
-<!-- Fusion 360 -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/fusion360.png" alt="Fusion 360">
-  </div>
-  <div class="tech-name">Fusion 360</div>
-</div>
-
-<!-- SolidWorks -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/solidworks.png" alt="SolidWorks">
-  </div>
-  <div class="tech-name">SolidWorks</div>
-</div>
-
-<!-- Git -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/git.png" alt="Git">
-  </div>
-  <div class="tech-name">Git</div>
-</div>
-
-<!-- TensorFlow -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/tensorflow.png" alt="TensorFlow">
-  </div>
-  <div class="tech-name">TensorFlow</div>
-</div>
-
-<!-- Blender -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/blender.png" alt="Blender">
-  </div>
-  <div class="tech-name">Blender</div>
-</div>
-
-<!-- MQTT -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/mqtt.png" alt="MQTT">
-  </div>
-  <div class="tech-name">MQTT</div>
-</div>
-
-      <!-- Python -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/python.png" alt="Python">
-  </div>
-  <div class="tech-name">Python</div>
-</div>
-
-<!-- C++ -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/cpp.png" alt="C++">
-  </div>
-  <div class="tech-name">C / C++</div>
-</div>
-
-<!-- ROS -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/ros.png" alt="ROS">
-  </div>
-  <div class="tech-name">ROS / ROS2</div>
-</div>
-
-<!-- Linux -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/linux.png" alt="Linux">
-  </div>
-  <div class="tech-name">Linux</div>
-</div>
-
-<!-- MATLAB -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/matlab.png" alt="MATLAB">
-  </div>
-  <div class="tech-name">MATLAB</div>
-</div>
-
-<!-- OpenCV -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/opencv.png" alt="OpenCV">
-  </div>
-  <div class="tech-name">OpenCV</div>
-</div>
-
-<!-- Gazebo -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/gazebo.png" alt="Gazebo">
-  </div>
-  <div class="tech-name">Gazebo</div>
-</div>
-
-<!-- Arduino -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/arduino.png" alt="Arduino">
-  </div>
-  <div class="tech-name">Arduino</div>
-</div>
-
-<!-- ESP32 -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/esp32.png" alt="ESP32">
-  </div>
-  <div class="tech-name">ESP32 / STM32</div>
-</div>
-
-<!-- KiCad -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/kicad.png" alt="KiCad">
-  </div>
-  <div class="tech-name">KiCad</div>
-</div>
-
-<!-- Fusion 360 -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/fusion360.png" alt="Fusion 360">
-  </div>
-  <div class="tech-name">Fusion 360</div>
-</div>
-
-<!-- SolidWorks -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/solidworks.png" alt="SolidWorks">
-  </div>
-  <div class="tech-name">SolidWorks</div>
-</div>
-
-<!-- Git -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/git.png" alt="Git">
-  </div>
-  <div class="tech-name">Git</div>
-</div>
-
-<!-- TensorFlow -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/tensorflow.png" alt="TensorFlow">
-  </div>
-  <div class="tech-name">TensorFlow</div>
-</div>
-
-<!-- Blender -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/blender.png" alt="Blender">
-  </div>
-  <div class="tech-name">Blender</div>
-</div>
-
-<!-- MQTT -->
-<div class="tech-item">
-  <div class="tech-logo">
-    <img src="resources/mqtt.png" alt="MQTT">
-  </div>
-  <div class="tech-name">MQTT</div>
-</div>
+    <div class="tech-strip">
+      <div class="tech-item"><div class="tech-logo"><img src="resources/python.png" alt="Python"></div><div class="tech-name">Python</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/cpp.png" alt="C++"></div><div class="tech-name">C / C++</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/ros.png" alt="ROS"></div><div class="tech-name">ROS / ROS2</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/linux.png" alt="Linux"></div><div class="tech-name">Linux</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/matlab.png" alt="MATLAB"></div><div class="tech-name">MATLAB</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/opencv.png" alt="OpenCV"></div><div class="tech-name">OpenCV</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/gazebo.png" alt="Gazebo"></div><div class="tech-name">Gazebo</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/arduino.png" alt="Arduino"></div><div class="tech-name">Arduino</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/esp32.png" alt="ESP32"></div><div class="tech-name">ESP32 / STM32</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/kicad.png" alt="KiCad"></div><div class="tech-name">KiCad</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/fusion360.png" alt="Fusion 360"></div><div class="tech-name">Fusion 360</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/solidworks.png" alt="SolidWorks"></div><div class="tech-name">SolidWorks</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/git.png" alt="Git"></div><div class="tech-name">Git</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/tensorflow.png" alt="TensorFlow"></div><div class="tech-name">TensorFlow</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/blender.png" alt="Blender"></div><div class="tech-name">Blender</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/mqtt.png" alt="MQTT"></div><div class="tech-name">MQTT</div></div>
+      <!-- duplicate for loop -->
+      <div class="tech-item"><div class="tech-logo"><img src="resources/python.png" alt="Python"></div><div class="tech-name">Python</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/cpp.png" alt="C++"></div><div class="tech-name">C / C++</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/ros.png" alt="ROS"></div><div class="tech-name">ROS / ROS2</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/linux.png" alt="Linux"></div><div class="tech-name">Linux</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/matlab.png" alt="MATLAB"></div><div class="tech-name">MATLAB</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/opencv.png" alt="OpenCV"></div><div class="tech-name">OpenCV</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/gazebo.png" alt="Gazebo"></div><div class="tech-name">Gazebo</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/arduino.png" alt="Arduino"></div><div class="tech-name">Arduino</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/esp32.png" alt="ESP32"></div><div class="tech-name">ESP32 / STM32</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/kicad.png" alt="KiCad"></div><div class="tech-name">KiCad</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/fusion360.png" alt="Fusion 360"></div><div class="tech-name">Fusion 360</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/solidworks.png" alt="SolidWorks"></div><div class="tech-name">SolidWorks</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/git.png" alt="Git"></div><div class="tech-name">Git</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/tensorflow.png" alt="TensorFlow"></div><div class="tech-name">TensorFlow</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/blender.png" alt="Blender"></div><div class="tech-name">Blender</div></div>
+      <div class="tech-item"><div class="tech-logo"><img src="resources/mqtt.png" alt="MQTT"></div><div class="tech-name">MQTT</div></div>
     </div>
   </div>
 </section>
@@ -1119,12 +877,9 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
     <div class="sec-heading">Building Systems<br>That Last</div>
     <p class="vis-quote">"The next decade of automation won't be defined by what systems can do in a lab — it will be defined by what they can sustain <em>in the field.</em>"</p>
     <div class="vis-domains">
-      <div class="vd">High-Performance Autonomous Systems</div>
-      <div class="vd">Industrial Robotics</div>
-      <div class="vd">Defense-Grade Systems</div>
-      <div class="vd">Smart Infrastructure</div>
-      <div class="vd">Emerging Markets</div>
-      <div class="vd">Environmental Monitoring</div>
+      <div class="vd">High-Performance Autonomous Systems</div><div class="vd">Industrial Robotics</div>
+      <div class="vd">Defense-Grade Systems</div><div class="vd">Smart Infrastructure</div>
+      <div class="vd">Emerging Markets</div><div class="vd">Environmental Monitoring</div>
     </div>
   </div>
 </section>
@@ -1132,37 +887,153 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
 <!-- FOOTER -->
 <footer>
   <div class="foot-grid">
-    <div>
-      <div class="foot-name">Philemon<br>Obed Obeng</div>
-      <div class="foot-role">Robotics Engineer · Ghana</div>
-      <p class="foot-tagline">Autonomous systems and intelligent robotics platforms for real-world deployment.</p>
-    </div>
-    <div>
-      <div class="fc-label">Contact</div>
-      <div class="fl">
-        <a href="mailto:philemonobjnr@gmail.com">philemonobjnr@gmail.com</a>
-        <a href="tel:+233257305999">+233 257 305 999</a>
-        <a href="https://github.com/Phil-obed" target="_blank">github.com/Phil-obed</a>
-        <a href="https://www.linkedin.com/in/philemonob" target="_blank">linkedin.com/in/philemonob</a>
-        <a href="#" onclick="openCV();return false">Download CV</a>
-      </div>
-    </div>
-    <div>
-      <div class="fc-label">Navigate</div>
-      <div class="fl">
-        <a href="#profile-strip">Profile</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#projects">Projects</a>
-        <a href="#philosophy">Approach</a>
-        <a href="#techstack">Stack</a>
-      </div>
-    </div>
+    <div><div class="foot-name">Philemon<br>Obed Obeng</div><div class="foot-role">Robotics Engineer · Ghana</div><p class="foot-tagline">Autonomous systems and intelligent robotics platforms for real-world deployment.</p></div>
+    <div><div class="fc-label">Contact</div><div class="fl"><a href="/cdn-cgi/l/email-protection#215149484d444c4e4f4e434b4f5361464c40484d0f424e4c"><span class="__cf_email__" data-cfemail="96e6fefffaf3fbf9f8f9f4fcf8e4d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a><a href="tel:+233257305999">+233 257 305 999</a><a href="https://github.com/Phil-obed" target="_blank">github.com/Phil-obed</a><a href="https://www.linkedin.com/in/philemonob" target="_blank">linkedin.com/in/philemonob</a><a href="#" onclick="openCV();return false">Download CV</a></div></div>
+    <div><div class="fc-label">Navigate</div><div class="fl"><a href="#profile-strip">Profile</a><a href="#capabilities">Capabilities</a><a href="#projects">Projects</a><a href="#philosophy">Approach</a><a href="#techstack">Stack</a></div></div>
   </div>
-  <div class="foot-bottom">
-    <div class="fcp">© 2025 Philemon Obed Obeng</div>
-    <div class="fcp">Sekondi-Takoradi, Ghana</div>
-  </div>
+  <div class="foot-bottom"><div class="fcp">© 2025 Philemon Obed Obeng</div><div class="fcp">Sekondi-Takoradi, Ghana</div></div>
 </footer>
+
+<!-- ══════════════════════════════════════
+     PROJECT OVERLAY — EDITORIAL MAGAZINE
+══════════════════════════════════════ -->
+<div id="po">
+
+  <!-- ① NAV BAR -->
+  <div class="po-nav">
+    <div class="po-nav-brand">
+      Philemon O. Obeng <span>—</span> <span id="po-breadcrumb" style="color:#111;font-weight:600">…</span>
+    </div>
+    <div class="po-nav-links">
+      <button class="po-nav-link" onclick="prevProj()">← Prev</button>
+      <button class="po-nav-link" onclick="nextProj()">Next →</button>
+      <button class="po-close-btn" onclick="closeP()">Close <div class="po-close-x">✕</div></button>
+    </div>
+  </div>
+
+  <!-- ② HERO: big heading left, dark product panel right -->
+  <div class="po-hero">
+    <!-- LEFT: white text panel -->
+    <div class="po-hero-l">
+      <div class="po-hero-top">
+        <div class="po-hero-eyebrow" id="po-eyebrow"></div>
+        <div class="po-hero-h1" id="po-title"></div>
+        <p class="po-hero-tagline" id="po-tagline"></p>
+        <div class="po-hero-sub">Project Overview</div>
+        <a id="po-ghcta" class="po-hero-cta" target="_blank" style="display:none">View on GitHub</a>
+      </div>
+      <div class="po-hero-bottom">
+        <div class="po-hero-meta-row" id="po-meta"></div>
+      </div>
+    </div>
+    <!-- RIGHT: dark visual panel -->
+    <div class="po-hero-r">
+      <div class="po-hero-r-bg" id="po-hero-bg"></div>
+      <div class="po-hero-r-bgword" id="po-hero-bgword"></div>
+      <div class="po-hero-r-icon" id="po-hero-icon"></div>
+      <div class="po-status-badge" id="po-status-badge"></div>
+      <div class="po-hero-r-tags" id="po-hero-tags"></div>
+    </div>
+  </div>
+
+  <!-- ③ THIN INFO STRIP (like product categories nav in reference) -->
+  <div class="po-overview" id="po-overview"></div>
+
+  <!-- ④ FEATURE 1: "Signature blend" style — title left, framed visual right -->
+  <div class="po-feature">
+    <div class="po-feature-text">
+      <div class="po-feature-num">01</div>
+      <div class="po-feature-label">Problem Statement</div>
+      <div class="po-feature-title">Why It<br>Was Built</div>
+      <p class="po-feature-body" id="po-prob"></p>
+      <span class="po-read-more">Read more</span>
+    </div>
+    <div class="po-feature-visual" id="po-feat1-vis">
+      <div class="po-feature-vis-bg" id="po-feat1-bg"></div>
+      <div class="po-feature-vis-frame" id="po-feat1-frame">
+        <div id="po-feat1-icon"></div>
+      </div>
+      <div class="po-feature-vis-caption">
+        <div class="po-feature-vis-name" id="po-feat1-name"></div>
+        <div class="po-feature-vis-sub">Problem</div>
+        <div class="po-feature-vis-dots">
+          <span class="on"></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="po-feature-bgword" id="po-feat1-word"></div>
+    </div>
+  </div>
+
+  <!-- ⑤ FEATURE 2: "House Blend" style — flipped (image left, text right) -->
+  <div class="po-feature flip">
+    <div class="po-feature-text">
+      <div class="po-feature-num">02</div>
+      <div class="po-feature-label">Architecture</div>
+      <div class="po-feature-title">System<br>Design</div>
+      <p class="po-feature-body" id="po-arch"></p>
+      <span class="po-read-more">Read more</span>
+    </div>
+    <div class="po-feature-visual dark" id="po-feat2-vis">
+      <div class="po-feature-vis-bg" id="po-feat2-bg"></div>
+      <div class="po-feature-vis-frame" id="po-feat2-frame">
+        <div id="po-feat2-icon"></div>
+      </div>
+      <div class="po-feature-vis-caption">
+        <div class="po-feature-vis-name" id="po-feat2-name"></div>
+        <div class="po-feature-vis-sub" style="color:rgba(255,255,255,.4)">Architecture</div>
+        <div class="po-feature-vis-dots">
+          <span></span><span class="on"></span><span></span>
+        </div>
+      </div>
+      <div class="po-feature-bgword" id="po-feat2-word"></div>
+    </div>
+  </div>
+
+  <!-- ⑥ SPECS GRID: hardware + software (like product specs) -->
+  <div class="po-specs">
+    <div class="po-specs-head">
+      <div>
+        <div class="po-specs-head-num">03</div>
+        <div class="po-specs-head-label">Full Stack</div>
+        <div class="po-specs-head-title">Hardware &amp; Software</div>
+      </div>
+    </div>
+    <div class="po-specs-grid">
+      <div class="po-specs-col">
+        <div class="po-specs-col-label">Hardware Components</div>
+        <div class="po-specs-list" id="po-hw"></div>
+      </div>
+      <div class="po-specs-col">
+        <div class="po-specs-col-label">Software &amp; Tools</div>
+        <div class="po-specs-list" id="po-sw"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑦ DARK BAND: challenges + status -->
+  <div class="po-dark-band">
+    <div class="po-dark-l">
+      <div class="po-dark-num">04</div>
+      <div class="po-dark-label">Engineering Challenges</div>
+      <div class="po-dark-title">Key Problems<br>Solved</div>
+      <p class="po-dark-text" id="po-ch"></p>
+    </div>
+    <div class="po-dark-r">
+      <div>
+        <div class="po-dark-status-label">Current Status</div>
+        <p class="po-dark-status-val" id="po-st"></p>
+      </div>
+      <a id="po-ghbtn" class="po-gh-cta" target="_blank" style="display:none">View on GitHub ↗</a>
+    </div>
+  </div>
+
+  <!-- ⑧ RELATED PROJECTS -->
+  <div class="po-related">
+    <div class="po-related-label">Other Projects</div>
+    <div class="po-related-grid" id="po-related-grid"></div>
+  </div>
+
+</div><!-- /po -->
 
 <!-- CV MODAL -->
 <div class="ov" id="cv-ov" onclick="closeCV(event)">
@@ -1178,19 +1049,8 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
   </div>
 </div>
 
-<!-- PROJECT MODAL -->
-<div class="ov" id="p-ov" onclick="closeP(event)">
-  <div class="mod" onclick="event.stopPropagation()">
-    <div class="m-head">
-      <div><h2 id="m-t"></h2><div class="m-sub" id="m-s"></div></div>
-      <button class="mclose" onclick="closeP()">✕</button>
-    </div>
-    <div class="m-body" id="m-b"></div>
-  </div>
-</div>
-
-<script>
-/* CURSOR */
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── CURSOR ── */
 const cur = document.getElementById('cur'), ring = document.getElementById('cur-r');
 let mx=-100,my=-100,rx=-100,ry=-100;
 document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
@@ -1200,103 +1060,227 @@ document.querySelectorAll('a,button,.proj-card,.pstrip-header,.cap-trigger,.vd,.
   el.addEventListener('mouseleave', () => ring.classList.remove('big'));
 });
 
-/* NAV blend fix on scroll */
+/* ── NAV BLEND ── */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').style.mixBlendMode = scrollY > window.innerHeight * .9 ? 'normal' : 'difference';
 });
 
-/* REVEAL */
+/* ── REVEAL ── */
 const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); }), { threshold: .07 });
 document.querySelectorAll('.rev').forEach(el => obs.observe(el));
 
-/* STRIP TOGGLE */
+/* ── STRIP TOGGLE ── */
 function toggleStrip(id) {
-  const el = document.getElementById(id);
-  const wasOpen = el.classList.contains('open');
+  const el = document.getElementById(id), was = el.classList.contains('open');
   document.querySelectorAll('.pstrip-col').forEach(c => c.classList.remove('open'));
-  if (!wasOpen) el.classList.add('open');
+  if (!was) el.classList.add('open');
 }
 
-/* CAP TOGGLE */
-function toggleCap(id) {
-  const el = document.getElementById(id);
-  el.classList.toggle('open');
-}
+/* ── CAP TOGGLE ── */
+function toggleCap(id) { document.getElementById(id).classList.toggle('open'); }
 
-/* FILTER */
+/* ── FILTER ── */
 function filt(btn, cat) {
-  document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  document.querySelectorAll('.proj-card').forEach(c => {
-    c.classList.toggle('hid', cat !== 'all' && !c.dataset.c.includes(cat));
-  });
+  document.querySelectorAll('.fb').forEach(b => b.classList.remove('on')); btn.classList.add('on');
+  document.querySelectorAll('.proj-card').forEach(c => { c.classList.toggle('hid', cat !== 'all' && !c.dataset.c.includes(cat)); });
 }
 
-/* PROJECT DATA */
-const PD = {
-  argus: { t:'Argus Bot', s:'INDUSTRIAL INSPECTION · PROTOTYPE',
-    prob:'Industrial environments require continuous inspection for gas leaks and thermal anomalies. Manual inspection in hazardous zones is expensive and dangerous.',
-    arch:'Ground-mobile ROS platform with differential drive. MQ-series gas sensors + thermal camera. Full autonomous navigation via SLAM and Nav Stack. Wireless telemetry for remote supervision.',
-    hw:['Differential drive chassis','MQ-series gas sensor array','Thermal camera module','LIDAR','Custom motor driver PCB','Wireless telemetry module'],
-    sw:['ROS (navigation + sensor fusion)','SLAM','OpenCV (thermal)','Python (sensors)','C++ (control)'],
-    ch:'Gas sensor calibration in variable thermal environments. Real-time wireless streaming with <100ms latency targets.',
-    st:'Physical prototype in active development. Navigation stack validated in Gazebo.', gh:'https://github.com/Phil-obed/Argus-bot.git'},
-  pikk: { t:'Pikk A1 — 6DoF Arm', s:'SIX-AXIS ROBOT ARM · PROTOTYPE',
-    prob:'Industrial arms are cost-prohibitive for small-scale research. This validates a 6-DOF arm from first principles through physical build.',
-    arch:'Six-axis serial manipulator with NEMA 17 steppers. Full Fusion 360 CAD with joint stress analysis. Workspace validation in RoboDK before fabrication. Custom PCB in development.',
-    hw:['6× NEMA 17 stepper motors','Custom control PCB (in dev)','3D-printed structural components','Stepper driver array'],
-    sw:['Fusion 360 (CAD)','RoboDK (simulation)','Embedded C (motor control)','Python (trajectory)'],
-    ch:'Joint stiffness with 3D-printed components under torque. Smooth microstepping across 6 simultaneous axes.',
-    st:'Multiple components fabricated and assembled. PCB layout in progress.', gh:null},
-  curiosity: { t:'Curiosity v2', s:'AQUATIC MONITORING · ACTIVE',
-    prob:'Illegal mining (galamsey) has severely contaminated Ghana\'s water bodies. Real-time spatial data is needed for environmental response.',
-    arch:'RC boat adapted for autonomous waypoint navigation. pH, turbidity, temperature sensors onboard. AI anomaly detection flags contamination. LoRa wireless to remote dashboard.',
-    hw:['RC boat platform','pH sensor','Turbidity sensor','DS18B20 temp probe','LoRa/GSM telemetry','GPS module'],
-    sw:['Python (data processing)','MQTT','ML anomaly detection','Web dashboard'],
-    ch:'Sensor drift over extended deployment. Waterproofing electronics for open water. GPS accuracy for contamination mapping.',
-    st:'Active development. Led as UENR Robotics Club President.', gh:null},
-  vtol: { t:'VTOL UAV System', s:'HYBRID UAV · CONCEPT',
-    prob:'Multirotors lack range. Fixed-wing need runways. VTOL hybrid enables vertical takeoff with efficient cruise flight.',
-    arch:'Hybrid quadrotor + pusher fixed-wing airframe. Transition logic in flight controller. Autonomous waypoints. Fusion 360 airframe + MATLAB flight dynamics.',
-    hw:['Custom composite airframe','Quadrotor lift motors + ESCs','Pusher propulsion','PX4 controller','GPS + pitot tube'],
-    sw:['PX4 / ArduPlane','Mission Planner','Fusion 360','MATLAB'],
-    ch:'Transition control stability. CG management across configurations.',
-    st:'Concept phase. CAD modeling in progress.', gh:null},
-  stemkit: { t:'STEM Robotics Kit', s:'EDUCATIONAL PLATFORM · DEPLOYED',
-    prob:'Imported robotics kits are unaffordable for Ghanaian schools. A locally designed kit changes the economics.',
-    arch:'Custom Arduino-based board with sensor, motor, and display breakout modules. Progressive curriculum for school robotics programs.',
-    hw:['Custom Arduino board','Sensor breakout modules','Motor driver module','Display module','3D-printed enclosures'],
-    sw:['Embedded C','Arduino IDE','Curriculum documentation'],
-    ch:'Durability under student use. Minimizing cost through local sourcing.',
-    st:'Built at ASAH Makerspace. In active student programs.', gh:null},
-  printer: { t:'Custom 3D Printer', s:'FDM BUILD · OPERATIONAL',
-    prob:'Building from components yields deep understanding of motion systems and firmware — directly transferable to robotics hardware.',
-    arch:'Cartesian/CoreXY frame from aluminum extrusions. NEMA 17 steppers. Marlin firmware configured and compiled. Used for fabricating components across all projects.',
-    hw:['Aluminum extrusion frame','NEMA 17 steppers (4×)','Linear rails','Heated bed','Hotend assembly','SKR/RAMPS mainboard'],
-    sw:['Marlin firmware','PrusaSlicer / Cura','PID tuning scripts'],
-    ch:'Dimensional accuracy through calibration. Vibration reduction at speed.',
-    st:'Fully operational. In active use across all projects.', gh:null}
+/* ── PROJECT DATA ── */
+const THEMES = {
+  argus:    { bg:'linear-gradient(135deg,#080e12,#0e2030)', badge:'bp-proto', badgeTxt:'Prototype' },
+  pikk:     { bg:'linear-gradient(135deg,#0c0615,#1a0e28)', badge:'bp-proto', badgeTxt:'Prototype' },
+  curiosity:{ bg:'linear-gradient(135deg,#040e0c,#082018)', badge:'bp-active', badgeTxt:'Active'    },
+  vtol:     { bg:'linear-gradient(135deg,#090c14,#101528)', badge:'bp-concept',badgeTxt:'Concept'   },
+  stemkit:  { bg:'linear-gradient(135deg,#100e06,#1e1808)', badge:'bp-proto', badgeTxt:'Deployed'  },
+  printer:  { bg:'linear-gradient(135deg,#0c0c06,#181808)', badge:'bp-built', badgeTxt:'Operational'}
 };
+
+const ICONS = {
+  argus:`<svg viewBox="0 0 60 60" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round"><circle cx="30" cy="30" r="12"/><circle cx="30" cy="30" r="3" fill="rgba(255,255,255,.2)" stroke="none"/><line x1="30" y1="5" x2="30" y2="18"/><line x1="30" y1="42" x2="30" y2="55"/><line x1="5" y1="30" x2="18" y2="30"/><line x1="42" y1="30" x2="55" y2="30"/><line x1="10" y1="10" x2="19" y2="19"/><line x1="41" y1="10" x2="50" y2="19" opacity=".4"/><line x1="10" y1="50" x2="19" y2="41" opacity=".4"/><line x1="41" y1="50" x2="50" y2="41" opacity=".4"/></svg>`,
+  pikk:`<svg viewBox="0 0 60 60" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round"><circle cx="30" cy="10" r="4"/><line x1="30" y1="14" x2="30" y2="26"/><path d="M30 26 Q20 34 14 44"/><path d="M30 26 Q40 34 46 44"/><circle cx="14" cy="47" r="3.5"/><circle cx="46" cy="47" r="3.5"/></svg>`,
+  curiosity:`<svg viewBox="0 0 60 60" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round"><path d="M8 36 Q14 24 30 24 Q46 24 52 36"/><ellipse cx="30" cy="36" rx="22" ry="6"/><line x1="20" y1="24" x2="20" y2="14"/><line x1="30" y1="24" x2="30" y2="10"/><line x1="40" y1="24" x2="40" y2="14"/><circle cx="30" cy="9" r="2.5" fill="rgba(255,255,255,.2)" stroke="none"/></svg>`,
+  vtol:`<svg viewBox="0 0 60 60" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round"><path d="M30 12 L30 48"/><path d="M10 30 L50 30"/><path d="M14 20 L30 12 L46 20" fill="rgba(255,255,255,.06)"/><circle cx="10" cy="30" r="4"/><circle cx="50" cy="30" r="4"/><circle cx="30" cy="48" r="4"/></svg>`,
+  stemkit:`<svg viewBox="0 0 60 60" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round"><rect x="12" y="12" width="36" height="26" rx="2"/><line x1="22" y1="12" x2="22" y2="38"/><line x1="30" y1="12" x2="30" y2="38"/><line x1="38" y1="12" x2="38" y2="38"/><line x1="12" y1="25" x2="48" y2="25"/><path d="M22 38 L22 48 M38 38 L38 48"/><line x1="16" y1="48" x2="44" y2="48"/></svg>`,
+  printer:`<svg viewBox="0 0 60 60" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round"><rect x="12" y="22" width="36" height="22" rx="1"/><path d="M18 22 L18 12 L42 12 L42 22"/><path d="M18 32 L18 50 L42 50 L42 32"/><circle cx="40" cy="30" r="2.5" fill="rgba(255,255,255,.3)" stroke="none"/><line x1="20" y1="38" x2="34" y2="38"/><line x1="20" y1="43" x2="30" y2="43"/></svg>`
+};
+
+const PD = {
+  argus:{ t:'Argus Bot', label:'INDUSTRIAL INSPECTION · PROTOTYPE', bgw:'ARGUS',
+    tags:['ROS','Thermal Vision','Gas Detection','SLAM','C++'],
+    meta:[{l:'Type',v:'Ground-Mobile Robot'},{l:'Stack',v:'ROS · OpenCV · C++'},{l:'Status',v:'Active Prototype'}],
+    prob:'Industrial environments — power plants, refineries, chemical facilities — require continuous inspection for gas leaks and thermal anomalies. Manual inspection in hazardous zones is operationally expensive and presents serious safety risks to personnel.',
+    arch:'Ground-mobile ROS-based platform with differential drive. Sensor array includes MQ-series gas detectors and a FLIR thermal camera module. Full autonomous navigation via SLAM mapping and Navigation Stack path planning. Wireless telemetry enables remote supervision from a safe distance.',
+    hw:['Differential drive chassis','MQ-series gas sensor array','FLIR thermal camera module','RPLiDAR A1 (mapping + obstacle avoidance)','Onboard compute unit (Raspberry Pi)','Custom motor driver PCB','Wireless telemetry module (LoRa)'],
+    sw:['ROS Noetic (navigation + sensor fusion)','SLAM (GMapping / Cartographer)','OpenCV (thermal frame analysis)','Python (sensor data processing)','C++ (low-level hardware control)'],
+    ch:'Gas sensor calibration across variable thermal environments introduced significant signal drift that required per-sensor polynomial correction models. Integrating thermal imaging data with spatial SLAM maps for contextual anomaly reporting required custom ROS node development. Real-time wireless streaming to the remote station targets sub-100ms latency, which demands careful QoS tuning on the communication stack.',
+    st:'Physical prototype in active development. Navigation stack fully validated in Gazebo simulation. Gas detection subsystem assembled and under calibration.', gh:'https://github.com/Phil-obed/Argus-bot.git'},
+
+  pikk:{ t:'Pikk A1', label:'SIX-AXIS ROBOTIC ARM · PROTOTYPE', bgw:'PIKK',
+    tags:['Fusion 360','RoboDK','NEMA 17','PCB Design','Embedded C'],
+    meta:[{l:'Type',v:'6-DOF Serial Manipulator'},{l:'Stack',v:'Fusion 360 · RoboDK · Embedded C'},{l:'Status',v:'In Development'}],
+    prob:'Industrial robotic arms are cost-prohibitive for small-scale automation research and education. This project validates a full 6-DOF arm designed from first principles — testing mechanical choices, workspace analysis, and embedded control through a physical build rather than simulation alone.',
+    arch:'Six-axis serial manipulator with NEMA 17 stepper motors for positional accuracy. Full mechanical CAD in Fusion 360 with joint stress analysis at each link. Workspace and reachability validated in RoboDK before any fabrication began. Custom multi-axis motor driver PCB currently under layout to consolidate control electronics.',
+    hw:['6× NEMA 17 stepper motors','Custom multi-axis control PCB (in layout)','3D-printed PLA structural links and joints','A4988/TMC2209 stepper driver array','Hall effect joint feedback sensors (planned)','24V power distribution board'],
+    sw:['Fusion 360 (mechanical CAD + FEA)','RoboDK (workspace simulation + kinematics)','Embedded C (microstepping + motion control)','Python (trajectory planning interface)','Custom serial command interpreter (G-code subset)'],
+    ch:'Achieving acceptable joint stiffness with 3D-printed PLA components under sustained torque load required iterative wall thickness and infill optimization. Coordinating smooth microstepping across 6 simultaneous axes without step loss demanded careful acceleration profiling. PCB layout must handle 6-channel motor drive current within a thermally constrained form factor.',
+    st:'Multiple structural links and joint assemblies fabricated and fitted. Custom PCB layout in progress. Firmware base for single-axis control operational.', gh:null},
+
+  curiosity:{ t:'Curiosity v2', label:'AQUATIC MONITORING VESSEL · ACTIVE', bgw:'CRV2',
+    tags:['AI/ML','pH','Turbidity','LoRa','Python','GPS'],
+    meta:[{l:'Type',v:'Autonomous Surface Vehicle'},{l:'Stack',v:'Python · MQTT · ML'},{l:'Status',v:'Active Development'}],
+    prob:'Illegal artisanal mining (galamsey) in Ghana has severely contaminated river systems, causing long-term ecological damage and public health risks. Manual water quality assessment is infrequent and lacks the real-time spatial resolution needed for meaningful environmental monitoring or regulatory response.',
+    arch:'RC boat hull adapted for autonomous waypoint navigation. Onboard sensor array collects pH, turbidity, temperature, and dissolved oxygen data at GPS-tagged sample points. Local processing with wireless LoRa transmission to a remote monitoring station dashboard. An ML anomaly detection model flags readings that breach contamination thresholds.',
+    hw:['RC boat hull (modified)','Atlas Scientific pH sensor module','Turbidity sensor (optical)','DS18B20 waterproof temperature probe','LoRa/GSM telemetry module','u-blox GPS module','STM32 microcontroller + ESP32 comms board'],
+    sw:['Python (sensor pipeline + control loop)','MQTT (telemetry data transport)','Scikit-learn (ML anomaly detection model)','Leaflet.js (web dashboard mapping)','Mission Planner (waypoint routing)'],
+    ch:'Sensor drift over multi-hour aquatic deployment required in-situ reference calibration routines. Waterproofing the electronics enclosure for open-water operation without adding excessive weight was a key mechanical constraint. GPS positional accuracy in areas with tall riverbank vegetation affected contamination zone delineation precision.',
+    st:'Active development under UENR Robotics Club. Sensor suite assembled and tested on static water. Autonomous navigation trials planned for Q1 2026.', gh:null},
+
+  vtol:{ t:'VTOL UAV System', label:'HYBRID UAV · CONCEPT DESIGN', bgw:'VTOL',
+    tags:['UAV','VTOL','PX4','Fusion 360','MATLAB'],
+    meta:[{l:'Type',v:'Hybrid Fixed-Wing VTOL'},{l:'Stack',v:'PX4 · Fusion 360 · MATLAB'},{l:'Status',v:'Concept Phase'}],
+    prob:'Standard multirotors are limited in range and endurance due to high hover power consumption. Fixed-wing platforms require runways or catapult launches. A VTOL hybrid architecture enables vertical takeoff and landing with efficient fixed-wing cruise — extending autonomous mission range from confined deployment zones.',
+    arch:'Hybrid airframe combining a quadrotor lift system with a pusher fixed-wing propulsion assembly. Transition logic between hover and forward-flight modes handled in PX4 flight controller firmware. Designed for autonomous waypoint missions with manual override. Airframe geometry modeled in Fusion 360; longitudinal and lateral flight dynamics analyzed in MATLAB.',
+    hw:['Custom composite / 3D-printed hybrid airframe','4× quadrotor lift motors + ESCs','Pusher motor + propeller assembly','PX4 / ArduPlane flight controller','u-blox GPS + digital compass','Pitot tube (airspeed)','4S LiPo battery + power distribution'],
+    sw:['PX4 Autopilot (flight stack + VTOL transition)','QGroundControl / Mission Planner (GCS)','Fusion 360 (airframe CAD)','MATLAB / Simulink (flight dynamics analysis)','Python (telemetry logging)'],
+    ch:'Achieving stable transition between hover and forward-flight modes without attitude divergence is the primary control challenge. CG management across different flight configurations affects handling qualities. Motor mount structural loading during high-pitch-rate attitude changes requires careful FEA validation.',
+    st:'Architecture and system design complete. CAD modeling in progress. Awaiting component procurement for prototype build.', gh:null},
+
+  stemkit:{ t:'STEM Robotics Kit', label:'EDUCATIONAL PLATFORM · DEPLOYED', bgw:'STEM',
+    tags:['Arduino','PCB Design','3D Print','Curriculum','IoT'],
+    meta:[{l:'Type',v:'Educational Robotics Kit'},{l:'Stack',v:'Arduino · Embedded C · 3D Printing'},{l:'Status',v:'Deployed'}],
+    prob:'Young students in Ghana lack access to affordable, hands-on hardware that makes robotics and embedded programming tangible. Commercially imported kits are priced well beyond the budget of most schools, and they rarely reflect the components available locally for follow-on projects.',
+    arch:'Modular hardware platform centered on a custom Arduino-compatible control board with purpose-designed breakout modules for sensors, motor control, and display. All modules use standardized connectors so students can reconfigure the system without soldering. Accompanied by a progressive curriculum of structured exercises mapped to a basic school robotics program.',
+    hw:['Custom Arduino-compatible control board (KiCad PCB)','DHT11/HC-SR04 sensor breakout modules','Dual H-bridge motor driver module','OLED display breakout module','3D-printed enclosures and chassis parts','Pre-crimped wiring harness (student-safe)'],
+    sw:['Embedded C firmware (Arduino IDE)','Pre-written exercise code libraries','Teacher-facing curriculum documentation (PDF)','Progressive 8-week exercise sequence'],
+    ch:'Engineering for robustness under daily student use required reinforced connector housings and current-limited outputs to prevent damage from wiring errors. Minimizing per-unit cost through local component sourcing while maintaining quality required multiple BOM iterations. Creating documentation accessible to non-technical teachers without simplifying the underlying engineering concepts was a significant curriculum design challenge.',
+    st:'Designed and manufactured at ASAH Makerspace. Kits deployed and in active use in student programs. Curriculum documentation complete.', gh:null},
+
+  printer:{ t:'Custom 3D Printer', label:'FDM BUILD · OPERATIONAL', bgw:'FDM',
+    tags:['Marlin','CoreXY','Stepper','Calibration','Mechanical'],
+    meta:[{l:'Type',v:'FDM 3D Printer (CoreXY)'},{l:'Stack',v:'Marlin · Cura · Mechanical'},{l:'Status',v:'Fully Operational'}],
+    prob:'Building a 3D printer from individual components rather than a kit yields deep practical understanding of motion systems, stepper motor behavior, firmware configuration, and precision calibration — skills directly transferable to robotics hardware development where motion control is fundamental.',
+    arch:'CoreXY kinematic frame built from 2020 aluminum extrusion. NEMA 17 stepper motors on all axes with GT2 belt drives. Direct-drive hotend assembly with E3D V6 block and PID-controlled 24V heated bed. Marlin 2.x firmware configured from scratch for the specific hardware geometry and compiled for 32-bit SKR mainboard.',
+    hw:['2020 aluminum extrusion CoreXY frame','NEMA 17 stepper motors (4×: X, Y, Z, E)','MGN12 linear rails (X) + V-slot wheels (Y/Z)','E3D V6 hotend + 40W heater cartridge','24V aluminum heated bed + borosilicate glass','SKR 1.4 Turbo 32-bit mainboard','TMC2209 stepper drivers (UART mode)'],
+    sw:['Marlin 2.x firmware (configured + compiled from source)','PrusaSlicer / Cura (slicing + print profiles)','PID autotune scripts (hotend + bed)','Klipper firmware (evaluated, tested)','OctoPrint (remote monitoring)'],
+    ch:'Achieving dimensional accuracy below 0.2mm required careful steps/mm calibration on all axes using a digital caliper feedback loop and iterative test print methodology. Vibration artifacts (ringing/ghosting) at higher print speeds required input shaper tuning. Extrusion multiplier and linear advance calibration needed separate systematic test routines to achieve consistent layer adhesion.',
+    st:'Fully operational. Regularly used for printing structural components, enclosures, and test fixtures across all other engineering projects.', gh:null}
+};
+
+/* ── OPEN / CLOSE PROJECT ── */
+const PROJ_ORDER = ['argus','pikk','curiosity','vtol','stemkit','printer'];
+let currentProjId = 'argus';
 
 function openP(id) {
   const p = PD[id]; if(!p) return;
-  document.getElementById('m-t').textContent = p.t;
-  document.getElementById('m-s').textContent = p.s;
-  const hw = p.hw.map(h=>`<li>${h}`).join('');
-  const sw = p.sw.map(s=>`<li>${s}`).join('');
-  document.getElementById('m-b').innerHTML = `
-    <div class="ms"><div class="ms-t">Problem</div><p>${p.prob}</p></div>
-    <div class="ms"><div class="ms-t">Architecture</div><p>${p.arch}</p></div>
-    <div class="ms m2"><div><div class="ms-t">Hardware</div><ul>${hw}</ul></div><div><div class="ms-t">Software</div><ul>${sw}</ul></div></div>
-    <div class="ms"><div class="ms-t">Key Challenges</div><p>${p.ch}</p></div>
-    <div class="mbar"><div><div class="ms-t" style="margin-bottom:.2rem">Status</div><p>${p.st}</p></div>${p.gh?`<a href="${p.gh}" target="_blank" style="font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--accent);color:var(--accent);text-decoration:none;white-space:nowrap;">GitHub ↗</a>`:''}</div>`;
-  document.getElementById('p-ov').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  const th = THEMES[id];
+  currentProjId = id;
+
+  // Nav breadcrumb
+  document.getElementById('po-breadcrumb').textContent = p.t;
+
+  // Hero left
+  const cat = p.cat || (p.label ? p.label.split('·')[0].trim() : '');
+  document.getElementById('po-eyebrow').textContent = cat + ' — ' + th.badgeTxt;
+  document.getElementById('po-title').textContent = p.t;
+  document.getElementById('po-tagline').textContent = p.prob.substring(0, 160) + '…';
+  document.getElementById('po-meta').innerHTML = (p.meta||[]).map(m=>`
+    <div class="po-hero-meta-item">
+      <div class="po-hero-meta-label">${m.l}</div>
+      <div class="po-hero-meta-val">${m.v}</div>
+    </div>`).join('');
+
+  // GitHub CTA
+  const ghcta = document.getElementById('po-ghcta');
+  const ghbtn = document.getElementById('po-ghbtn');
+  if(p.gh){ ghcta.href=p.gh; ghcta.style.display='inline-flex'; if(ghbtn){ghbtn.href=p.gh; ghbtn.style.display='inline-flex';} }
+  else { ghcta.style.display='none'; if(ghbtn) ghbtn.style.display='none'; }
+
+  // Hero right dark panel
+  document.getElementById('po-hero-bg').style.background = th.bg;
+  document.getElementById('po-hero-bgword').textContent = p.bgw;
+  document.getElementById('po-hero-icon').innerHTML = ICONS[id] || '';
+  const sb = document.getElementById('po-status-badge');
+  sb.className = 'po-status-badge sbb-' + th.badge.replace('bp-','');
+  sb.textContent = th.badgeTxt;
+  document.getElementById('po-hero-tags').innerHTML = (p.tags||[]).map(t=>`<span class="po-hero-r-tag">${t}</span>`).join('');
+
+  // Overview strip: meta items
+  document.getElementById('po-overview').innerHTML = (p.meta||[]).map(m=>`
+    <div class="po-overview-item">
+      <div class="po-overview-label">${m.l}</div>
+      <div class="po-overview-val">${m.v}</div>
+    </div>`).join('');
+
+  // Feature 1: Problem
+  document.getElementById('po-prob').textContent = p.prob;
+  document.getElementById('po-feat1-name').textContent = p.t;
+  document.getElementById('po-feat1-bg').style.background = th.bg;
+  document.getElementById('po-feat1-icon').innerHTML = ICONS[id] || '';
+  document.getElementById('po-feat1-word').textContent = p.bgw;
+
+  // Feature 2: Architecture
+  document.getElementById('po-arch').textContent = p.arch;
+  document.getElementById('po-feat2-name').textContent = p.t;
+  document.getElementById('po-feat2-bg').style.background = th.bg;
+  document.getElementById('po-feat2-icon').innerHTML = ICONS[id] || '';
+  document.getElementById('po-feat2-word').textContent = p.bgw;
+
+  // Specs grid
+  document.getElementById('po-hw').innerHTML = p.hw.map((h,i)=>`
+    <div class="po-specs-item">
+      <span class="po-specs-n">0${i+1}</span>${h}
+    </div>`).join('');
+  document.getElementById('po-sw').innerHTML = p.sw.map((s,i)=>`
+    <div class="po-specs-item">
+      <span class="po-specs-n">0${i+1}</span>${s}
+    </div>`).join('');
+
+  // Dark band
+  document.getElementById('po-ch').textContent = p.ch;
+  document.getElementById('po-st').textContent = p.st;
+
+  // Related projects
+  const others = PROJ_ORDER.filter(pid => pid !== id);
+  document.getElementById('po-related-grid').innerHTML = others.map(pid => {
+    const pr = PD[pid];
+    return `<div class="po-rc" onclick="openP('${pid}')">
+      <div class="po-rc-cat">${(pr.cat || (pr.label ? pr.label.split('·')[0].trim() : ''))}</div>
+      <div class="po-rc-name">${pr.t}</div>
+      <p class="po-rc-desc">${pr.prob.substring(0,75)}…</p>
+    </div>`;
+  }).join('');
+
+  document.getElementById('po').scrollTop = 0;
+  document.getElementById('po').classList.add('open');
+  document.body.classList.add('po-open');
 }
-function closeP(e) { if(!e || e.target===document.getElementById('p-ov')) { document.getElementById('p-ov').classList.remove('open'); document.body.style.overflow=''; } }
-function openCV() { document.getElementById('cv-ov').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeCV(e) { if(!e || e.target===document.getElementById('cv-ov')) { document.getElementById('cv-ov').classList.remove('open'); document.body.style.overflow=''; } }
-document.addEventListener('keydown', e => { if(e.key==='Escape'){closeP();closeCV();} });
+
+function closeP() {
+  document.getElementById('po').classList.remove('open');
+  document.body.classList.remove('po-open');
+}
+
+function prevProj() {
+  const idx = PROJ_ORDER.indexOf(currentProjId);
+  openP(PROJ_ORDER[(idx - 1 + PROJ_ORDER.length) % PROJ_ORDER.length]);
+}
+
+function nextProj() {
+  const idx = PROJ_ORDER.indexOf(currentProjId);
+  openP(PROJ_ORDER[(idx + 1) % PROJ_ORDER.length]);
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeP();
+  if(document.getElementById('po').classList.contains('open')) {
+    if(e.key === 'ArrowRight') nextProj();
+    if(e.key === 'ArrowLeft') prevProj();
+  }
+});
+
+/* ── CV MODAL ── */
+function openCV() { document.getElementById('cv-ov').classList.add('open'); }
+function closeCV(e) { if(!e || e.target === document.getElementById('cv-ov')) document.getElementById('cv-ov').classList.remove('open'); }
 </script>
 </body>
 </html>
