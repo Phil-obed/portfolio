@@ -71,13 +71,13 @@ const GALLERIES = {
     feat2: ['resources/arguspcb.png', 'resources/22.png', 'resources/2.png', 'resources/5.png'],
   },
   pikk: {
-    hero:  ['images/pikk.png', 'images/pikk-joints.png'],
-    feat1: ['images/pikk-cad.png', 'images/pikk-print.png'],
-    feat2: ['images/pikk-pcb.png', 'images/pikk-wiring.png'],
+    hero:  ['resources/arm.png'],
+    feat1: ['resources/robot.jpg'],
+    feat2: ['resources/3d.png'],
   },
   vtol: {
-    hero:  ['resources/vtol.png', 'resources/argus-2.png', 'resources/argus-3.png'],
-    feat1: ['resources/argus-sensor.png', 'resources/argus-chassis.png'],
+    hero:  ['resources/vtol.png'],
+    feat1: ['resources/drone.jpg'],
     feat2: ['resources/vtolsk.png', 'resources/vtola.png', 'resources/vtoll.png'],
   },
 };
